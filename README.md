@@ -1,24 +1,25 @@
-# vue-app-full
+# eventos-landing
 
-## Project setup
+
+## Configuración inicial del proyecto
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### Compilación y actualizaón en tiempo real para el desarrollo
 ```
 yarn serve
 ```
 
-### Compiles and minifies for production
+### Compilación y minificación de archivos para producción
 ```
 yarn build
 ```
 
-### Lints and fixes files
+### Lints y correccion de archivos
 ```
 yarn lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Configuración personalizada
+Vea [Configuration Reference](https://cli.vuejs.org/config/).
