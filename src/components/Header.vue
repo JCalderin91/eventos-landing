@@ -71,3 +71,11 @@
     </div>
   </div><!-- header end -->
 </template>
+
+<style lang="scss" scope>
+  .top-contact-info{
+    li{
+      color: white
+    }
+  }
+</style>

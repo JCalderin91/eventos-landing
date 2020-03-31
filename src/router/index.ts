@@ -15,6 +15,16 @@ const routes = [
     name: 'Service',
     component: () => import('../views/Service.vue')
   },
+  {
+    path: '/results',
+    name: 'results',
+    component: () => import('../views/Results.vue')
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: () => import('../views/Profile.vue')
+  },
 ]
 
 const router = new VueRouter({

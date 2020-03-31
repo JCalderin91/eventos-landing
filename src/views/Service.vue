@@ -36,14 +36,33 @@
               </div>
             </div>
           </div>
+          <br>
+          <div class="card">
+            <Review-form/>
+          </div>
+          <br>
+          <div class="card">
+            <h5><span>12</span> Comentarios</h5>
+            <hr>
+            <Review v-for="i in 3" :key="i"/>
+          </div>
         </div>
         <div class="col-md-4">
           Mapa
+          <Profile-partial/>
         </div>
       </div>
     </div>
   </div>
 </template>
+<script>
+import ReviewForm from '@/components/ReviewForm'
+import Review from '@/components/Review'
+import ProfilePartial from '@/components/ProfilePartial'
+export default {
+  components: {ReviewForm, Review, ProfilePartial}
+}
+</script>
 
 <style lang="scss" scope>
   .top-bar {
@@ -59,12 +78,10 @@
       border-radius: 3px;
       color: white;
     }
-
     .rating {
       background-color: #16e53e;
       margin-right: 10px;
     }
-
     .reserve {
       background-color: #ff3030;
     }

@@ -95,12 +95,11 @@ p{
 	font-size:14px;
 	padding:0;
 	font-weight:400;
-	text-align:center;
 	margin:0;
 	line-height:1.6;
 	text-decoration:none;
 	}
-a,span,ul,li{
+a,ul,li{
 	font-family:'Montserrat';
 	font-size:14px;
 	padding:0;
@@ -1062,18 +1061,7 @@ a.toolbar-new-listing{
 --------------------------------------------------------------------------------------------------------------------------------
 */
 #funfact{background-size:cover !important;}
-#funfact-1{}
-#funfact-1 .col-lg-3,
-#funfact-1 .col-md-3,
-#funfact-1 .col-sm-6,
-#funfact-1 .col-xs-12{}
-
-.fun-wrap{}
 .funfact-1{padding:0 30px;}
-#funfact-1 .color-1{}
-#funfact-1 .color-2{}
-#funfact-1 .color-3{}
-#funfact-1 .color-4{}
 .count{
     font-size: 36px;
     font-weight: 400;
@@ -1220,7 +1208,6 @@ a.toolbar-new-listing{
 	margin-top:7px;
 	
 	}
-.sidebar .sidebar-listing-search-wrap form select.sidebar-listing-search-select selected{}
 .sidebar .sidebar-listing-search-wrap form select.sidebar-listing-search-select option{
 	padding:15px 20px;
 	font-size:13px;
@@ -1229,7 +1216,7 @@ a.toolbar-new-listing{
 	border-left:none;
 	border-right:none;
 	border-bottom:none;
-	}
+}
 .sidebar .sidebar-listing-search-wrap form select::-ms-expand { /* for IE 11 */
     display: none;
 }
@@ -1397,8 +1384,6 @@ a.toolbar-new-listing{
 
 
 /* sidebar category list widget */
-.sidebar .category-widget{}
-.sidebar .sidebar-category-widget-wrap{}
 .sidebar .sidebar-category-widget-wrap ul{margin:-5px 0;}
 .sidebar .sidebar-category-widget-wrap ul li{padding:5px 0;}
 .sidebar .sidebar-category-widget-wrap ul li a{display:block;text-align:left;position:relative;line-height:1;text-transform:capitalize;}
@@ -1406,8 +1391,6 @@ a.toolbar-new-listing{
 .sidebar .sidebar-category-widget-wrap ul li a i{display:inline-block;margin-right:10px;width:28px;height:28px;line-height:30px;border-radius:50%;text-align:center;font-size:12px;}
 
 /* sidebar location list widget */
-.sidebar .location-widget{}
-.sidebar .sidebar-location-widget-wrap{}
 .sidebar .sidebar-location-widget-wrap ul{margin:-5px 0;}
 .sidebar .sidebar-location-widget-wrap ul li{padding:5px 0;}
 .sidebar .sidebar-location-widget-wrap ul li a{display:block;text-align:left;position:relative;line-height:1;text-transform:capitalize;}
@@ -1415,8 +1398,6 @@ a.toolbar-new-listing{
 .sidebar .sidebar-location-widget-wrap ul li a i{display:inline-block;margin-right:10px;line-height:16px;text-align:center;font-size:16px;}
 
 /* sidebar opening hours  widget */
-.sidebar .opening-hours{}
-.sidebar-opening-hours-widget{}
 .opening-hours-field{border-bottom:1px solid #e9f1f3;padding:10px 0;}
 .opening-hours-field:first-child{padding-top:0;}
 .opening-hours-field span{float:right;}
@@ -1431,7 +1412,6 @@ a.toolbar-new-listing{
 .info-box{padding:30px;margin-bottom:30px;}
 .info-box .info-icon{text-align:center;}
 .info-box .info-icon  i{width:60px;height:60px;line-height:60px;font-size:24px;border-radius:50%;text-align:center;}
-.info-box .info-content{}
 .info-box .info-content .info-title{margin-top:20px;}
 
 .info-box .info-content .info-title h6{text-align:center;text-transform:uppercase;font-weight:400;}
@@ -1440,7 +1420,6 @@ a.toolbar-new-listing{
 
 /* contact form */
 
-.contact-form{}
 .contact-form input{margin-bottom:30px;width:100%;}
 .contact-form input[placeholder], .contact-form textarea[placeholder]{font-family:'Montserrat';padding:20px 40px;}
 .contact-form textarea{margin-bottom:30px;width:100%;}
@@ -1454,7 +1433,6 @@ a.toolbar-new-listing{
 /* subscription */
 
 .subscription{position:relative;top:30px;}
-.subscribe-wrap{}
 .subscribe-text{padding-left:20px;}
 .subscribe-text h4{line-height:58px;text-align:left;}
 .subscribe-form{padding-right:20px;}
@@ -1506,18 +1484,12 @@ a.toolbar-new-listing{
 --------------------------------------------------------------------------------------------------------------------------------
 */
 
-.footer{}
-
-.footer-copyright{}
 .footer-copyright p{text-align:left;line-height:26px;}
 .footer-copyright p a{display:inline-block;}
 
 
 
 .footer-bottom{padding-top:20px;}
-.footer-main{}
-.footer-logo{}
-.footer-logo a{}
 .footer-logo a img{width:auto;} 
 .footer-intro{margin-top:15px;}
 .footer-intro p{text-align:left;margin-bottom:10px;max-width:285px;}
@@ -1539,14 +1511,10 @@ a.toolbar-new-listing{
 .footer-recent-post{margin-bottom:15px;padding-bottom:15px;border-bottom:1px solid #222;}
 .footer-recent-post-figure{float: left; width: 100px;}
 .footer-recent-post-content{float: left;margin-left: 20px; width: 250px;}
-.footer-recent-post-title{}
 .footer-recent-post-title a{letter-spacing:1px;text-align:left;text-transform:uppercase;line-height:1;}
-.footer-recent-post-disc{}
 .footer-recent-post-disc p{text-align:left;font-size:13px;text-transform:capitalize;margin-top:5px;}
-.footer-recent-post-caption{}
 .footer-recent-post-caption p.date{text-align:left;}
 
-.footer-flikr-widget{}
 .footer-flikr-widget ul.flikr-list{margin-left:-7px;margin-right:-7px;}
 .footer-flikr-widget ul.flikr-list li{width:33.3333%;padding:0 7px; margin-bottom:14px;float:left;}
 
@@ -1696,10 +1664,7 @@ a.toolbar-new-listing{
 --------------------------------------------------------------------------------------------------------------------------------
 */
 .entry-wrap{margin-bottom:30px;}
-.entry-wrap .entry-figure{}
-.entry-wrap .entry-figure img{}
 .entry-wrap .entry-content {padding:30px;}
-.entry-wrap .entry-content .entry-title{}
 .entry-wrap .entry-content .entry-title h4{text-align:left;font-weight:400;letter-spacing:1px;}
 .entry-wrap .entry-content .entry-metas{margin-top:10px;}
 .entry-wrap .entry-content .entry-metas ul{text-align:left;margin:0 -10px;}
@@ -1711,7 +1676,6 @@ a.toolbar-new-listing{
 .entry-wrap .entry-content .entry-readmore{margin-top:30px;text-align:left;}
 .entry-wrap .entry-content .entry-readmore a{display:inline-block;padding:10px 35px;border-radius:25px;}
 
-.comments-main-title{}
 .comments-main-title h5{font-weight:400;letter-spacing:2px;}
 .comments-main-title p{margin-top:5px;}
 .comment-author-name h5{font-weight:400;letter-spacing:2px;}
@@ -1730,7 +1694,6 @@ a.toolbar-new-listing{
 --------------------------------------------------------------------------------------------------------------------------------
 */
 
-.error-404{}
 .error-404 h1{line-height:1;font-size:250px;}
 .error-404 h1 span{line-height:1;font-size:372px;font-weight:bold;text-transform:uppercase;display:inline-block;}
 .error-404 h3{line-height:1;font-size:30px;text-transform:uppercase;letter-spacing:10px;word-spacing:5px;}
@@ -1746,7 +1709,6 @@ a.toolbar-new-listing{
 .detail-rating{margin-top:30px;}
 
 
-.shop-detail-disc-review{}
 
 .listing-single .listing-main-content .score-callback{margin-top:-12px;}
 .listing-single .listing-main-content .score-callback .star-on.fa-star ,
@@ -1858,13 +1820,10 @@ a.toolbar-new-listing{
 .listing-modal-1 .modal-header  .modal-title { text-align:left;line-height:1;color:#08c2f3;}
 .listing-modal-1 .modal-header .close {line-height: 1;margin-top: 3px;color:#08c2f3;opacity:1;font-size:24px;}
 .listing-modal-1 .modal-body {padding:30px 0 0 0;}
-
-.listing-login-form{}
 .listing-form-field{position:relative;}
 .listing-form-field i{position:absolute;right:0;width:47px;height:47px;top:0;border-left:1px solid #eee;line-height:47px;text-align:center;}
 .listing-form-field input{width:100%;text-transform:capitalize;}
 .listing-form-field input.form-field{padding:15px 15px;border:1px solid #eee;margin-bottom:10px;box-shadow:none;}
-.listing-form-field .checkbox{}
 .listing-form-field a{
 	display: inline-block;
     float: right;
@@ -1901,7 +1860,6 @@ label.checkbox-lable{position:relative;top:-8px;color:#999;}
 	line-height:20px;
 	text-align:center;
 }
-.bottom-links{}
 .bottom-links p{text-transform:capitalize;text-align:left;}
 .bottom-links p a{display:inline-block;margin-left:10px;color:#08c2f3;}
 
@@ -1909,7 +1867,56 @@ label.checkbox-lable{position:relative;top:-8px;color:#999;}
 .listing-form-social ul{margin:0 -5px;text-align:left;}
 .listing-form-social ul li{display:inline-block;padding:0 3px;}
 .listing-form-social ul li a{width:40px;height:40px;line-height:40px;text-align:center;border-radius:4px;font-size:16px;}
-.listing-form-social ul li a i{}
 
 
 
+.card{
+	padding: 15px;
+}
+
+select.listing-search-select{border:none;width: 90%;}
+
+select.listing-search-select{
+	width:100%;
+	height:42px;
+	line-height:56px;
+	font-size:14px;
+	font-family:'Montserrat';
+	text-transform:capitalize;
+	padding:0 0 0 20px;
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    text-overflow: '';
+	box-shadow:none;
+	border:none;
+	color:#999;
+	margin-bottom:7px;
+	margin-top:7px;
+	
+	}
+select.listing-search-select option{
+	padding:15px 20px;
+	font-size:13px;
+	font-family:'Montserrat';
+	border-top:1px solid #f7f7f7;
+	border-left:none;
+	border-right:none;
+	border-bottom:none;
+}
+
+
+.rating {
+	display: inline-table;
+	padding: 10px;
+	border-radius: 3px;
+	color: white;
+	background-color: #16e53e;
+	margin-right: 10px;
+}
+.reserve {
+	display: inline-table;
+	padding: 10px;
+	border-radius: 3px;
+	color: white;
+	background-color: #ff3030;
+}
