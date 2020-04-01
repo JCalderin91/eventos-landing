@@ -22,10 +22,10 @@
                   </div>
                   <div class="social-content">
                     <ul class="social-links">
-                      <li><a class="linkedin" href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                      <li><a class="twitter" href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                      <li><a class="facebook" href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                      <li><a class="youtube" href="#" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                      <li><a class="linkedin" href="http://www.linkedin.com/company/EventosOKcom" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                      <li><a class="twitter" href="https://twitter.com/EVENTOSOKcom" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                      <li><a class="facebook" href="https://www.facebook.com/eventosokcom" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                      <li><a class="youtube" href="https://www.instagram.com/eventosokcom/" target="_blank"><i class="fa fa-instagram"></i></a></li>
                       <!--<li><button class = "login" data-toggle = "modal" data-target = "#login">login</button></li>
 										<li><button class = "register" data-toggle = "modal" data-target = "#register">register</button></li>-->
                     </ul>
@@ -41,17 +41,10 @@
               <router-link to="/" title="Responsive Slide Menus"><img src="images/logo.png" alt="" /></router-link>
             </div>
             <ul class="mobile-sub wsmenu-list pull-right">
-              <li><a href="index.html" class="">Quienes somos</a>
-                <ul class="wsmenu-submenu">
-                  <li><a href="index.html">Home 1</a></li>
-                  <li><a href="index-2.html">Home 2</a></li>
-                  <li><a href="index-3.html">Home 3</a></li>
-                  <li><a href="index-4.html">Home 4</a></li>
-                </ul>
-              </li>
-              <li><a href="pricing.html" class="">condiciones legales</a></li>
-              <li><a href="category.html">politicas</a></li>
-              <li><a href="listing-archive.html">registrarse</a></li>
+              <li><router-link tag="a"  to="/about-us" class="">Quienes somos</router-link></li>
+              <li><router-link tag="a"  to="/legals" class="">condiciones legales</router-link></li>
+              <li><router-link tag="a"  to="/politics">politicas</router-link></li>
+              <li><a @click.prevent="toggleModal('user-register')">registrase</a></li>
               <!-- <li><a href="#">pages</a>
                 <ul class="wsmenu-submenu">
                   <li><a href="about.html">About</a></li>
@@ -62,7 +55,7 @@
 
                 </ul>
               </li> -->
-              <li><a class="toolbar-new-listing" href="#"> Acceder</a></li>
+              <li><a @click.prevent="toggleModal('login-form')" class="toolbar-new-listing"> Acceder</a></li>
             </ul>
           </nav>
         </div>
@@ -79,3 +72,12 @@
     }
   }
 </style>
+
+<script>
+import {mapMutations} from 'vuex';
+export default {
+  methods:{
+    ...mapMutations(['toggleModal'])
+  }
+}
+</script>

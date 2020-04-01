@@ -2,14 +2,13 @@
   <div>
     <img src="images/listings/370x300/05.jpg" alt="feature item" />
     <div class="card">
-      <h6>Diner & Wine</h6>
-      <div class="d-flex">
-        <div class="rating">8.0</div>
-        <span>$ 300.0</span>
+      <h6>{{item.nombre_servicio}}</h6>
+      <div class="d-flex justify-content-between align-items-center mt-2">
+        <div class="btn btn-success">8.0 <i class="fa fa-trophy"></i></div>
+        <span>$ {{item.monto_servicio}}</span>
       </div>
       <br>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis sit nobis labore distinctio corporis, ipsam
-        voluptate deleniti et nihil, nam dolorum debitis incidunt molestias harum!</p>
+      <p>{{item.descripcion_servicio}}</p>
       <hr>
       <div class="row">
         <div class="col-md-6 text-uppercase">
@@ -23,6 +22,18 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    item: {
+
+      required: true,
+    }
+  }
+}
+</script>
+
 <style lang="scss" scope>
   .rating {
     display: inline-block;

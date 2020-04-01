@@ -1,15 +1,15 @@
 <template>
   <div>
     <section class="top-bar bgwhite">
-      <div class="row">
-        <div class="container">
+      <div class="container">
+        <div class="row">
           <div class="col-sm-6">
-            <h5 class="text-left">Tasti noodle <span class="text-success">$200</span></h5>
+            <h5 class="text-left">{{ title }} <span class="text-success">$200</span></h5>
             <p class="text-left">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
           </div>
           <div class="col-sm-6 actions">
-            <div class="rating ml-3">8.0</div>
-            <div class="reserve">Solicitar Presupuesto</div>
+            <div class="btn btn-success mr-2">8.0 <i class="fa fa-trophy"></i></div>
+            <div class="btn btn-danger">Solicitar Presupuesto <i class="fa fa-file"></i></div>
           </div>
         </div>
       </div>
@@ -28,7 +28,7 @@
               repellendus exercitationem, quam incidunt, dolores iure doloribus necessitatibus? Quidem, error.</p>
 
             <div class="service-categories row">
-              <div v-for="i in 6" :key="i" class="col-md-4">
+              <div v-for="i in 6" :key="i" class="col-sm-4">
                 <p>
                   <i class="fa fa-plus"></i>
                   Categoria {{i}}
@@ -42,7 +42,7 @@
           </div>
           <br>
           <div class="card">
-            <h5><span>12</span> Comentarios</h5>
+            <h5>12 Comentarios</h5>
             <hr>
             <Review v-for="i in 3" :key="i"/>
           </div>
@@ -60,7 +60,16 @@ import ReviewForm from '@/components/ReviewForm'
 import Review from '@/components/Review'
 import ProfilePartial from '@/components/ProfilePartial'
 export default {
-  components: {ReviewForm, Review, ProfilePartial}
+  components: {ReviewForm, Review, ProfilePartial},
+  mounted(){
+    console.log(this.$route.params);
+    
+  },
+  computed: {
+    title(){
+      return this.$route.params.title ? this.$route.params.title : 'tastsi noddle'
+    }
+  }
 }
 </script>
 

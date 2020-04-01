@@ -9,7 +9,6 @@
           <h3 class="white margin-bottom-30">Consultas nuestros proveedores por tu zona</h3>
         </div>
         <Search-form/>
-
       </div>
     </div>
   </section>

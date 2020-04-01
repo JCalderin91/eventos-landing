@@ -27,7 +27,7 @@
         <div class="col-md-4">
           Mapa
         </div>
-        <div class="col-md-6">
+        <div class="col-md-8">
           <div class="section-items row">
             <div class="col-md-6" v-for="i in 6" :key="i">
               <Item />

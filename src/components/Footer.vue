@@ -51,32 +51,27 @@
     </div><!-- .container end -->
     <div class="footer-bottom">
       <div class="container">
-        <div class="row clearfix">
-          <div class="social-section style-2 pull-right">
-            <div class="social-wrap clearfix">
-              <div class="col-md-12 col-sm-12 col-xs-12 social-links">
-                <ul class="pull-right clearfix">
-                  <li class="item">
-                    <a class="" href="#"><i class="fa fa-linkedin-square"></i></a>
-                  </li><!-- .ITEM -->
-                  <li class="item">
-                    <a class="" href="#"><i class="fa fa-facebook-square"></i></a>
-                  </li><!-- .ITEM -->
-                  <li class="item">
-                    <a class="" href="#"><i class="fa fa-twitter-square"></i></a>
-                  </li><!-- .ITEM -->
-                  <li class="item">
-                    <a class="" href="#"><i class="fa fa-instagram"></i></a>
-                  </li><!-- .ITEM -->                  
-                </ul>
-              </div>
+        <div class="row">
+          <div class="col-md-6 col-12">
+            <div class="footer-copyright">
+              <p>EventosOK &copy; 2020 Desarrollado por Boomideas.pro</p>
             </div>
           </div>
-          <div class="col-md-4 col-sm-12 col-xs-12 pull-left margin-bottom-20">
-            <div class="footer-copyright">
-              <p>&copy; 2020 All Rights Reserved @ <a href="" target="_blank">Jcalderin</a>
-              </p>
-            </div>
+          <div class="col-md-6 col-12 social-links d-flex justify-content-center justify-content-md-end">
+            <ul>
+              <li class="item">
+                <a class="" href="http://www.linkedin.com/company/EventosOKcom"><i class="fa fa-linkedin-square"></i></a>
+              </li><!-- .ITEM -->
+              <li class="item">
+                <a class="" href="https://www.facebook.com/eventosokcom"><i class="fa fa-facebook-square"></i></a>
+              </li><!-- .ITEM -->
+              <li class="item">
+                <a class="" href="https://twitter.com/EVENTOSOKcom"><i class="fa fa-twitter-square"></i></a>
+              </li><!-- .ITEM -->
+              <li class="item">
+                <a class="" href="https://www.instagram.com/eventosokcom/"><i class="fa fa-instagram"></i></a>
+              </li><!-- .ITEM -->                  
+            </ul>
           </div>
         </div>
       </div>
@@ -85,12 +80,28 @@
 </template>
 
 <style lang="scss" scope>
-.footer-intro{
-  p{
-    span{
-      color: white;
-      font-weight: bold;
+  .footer-bottom {
+    padding-bottom: 15px;
+  }
+
+  .social-links {
+    ul {
+      li {
+        display: inline-block;
+        margin: 0 5px;
+        a:not(.nohover):hover i {
+          color: black;
+        }
+      }
     }
   }
-}  
+
+  .footer-intro {
+    p {
+      span {
+        color: white;
+        font-weight: bold;
+      }
+    }
+  }
 </style>

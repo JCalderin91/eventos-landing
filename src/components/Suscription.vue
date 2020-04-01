@@ -8,7 +8,7 @@
             <h4>Suscribe a nuestras ofertas</h4>
           </div>
         </div>
-        <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="col-12">
           <div class="subscribe-form">
             <form class="mailchimp">
               <input class="subs-field" type="email" name="email" placeholder="Ingrese su correo" required />

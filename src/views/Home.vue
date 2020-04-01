@@ -14,10 +14,12 @@ import Category from '@/components/Category'
 import Listing from '@/components/Listing'
 import CallToAction from '@/components/CallToAction'
 
+
 export default {
   name: 'Home',
   components: {
     HeaderSection, Category, Listing, CallToAction
-  }
+  },
+  
 }
 </script>

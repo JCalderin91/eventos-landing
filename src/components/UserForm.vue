@@ -1,0 +1,53 @@
+<template>
+  <div class="card">
+    <div class="card-title">
+      <h4 class="text-center">Registrarse</h4>
+      <p class="text-center">Registro de clientes</p>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Nombres</label>
+          <input type="text" class="form-control">
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Apellidos</label>
+          <input type="text" class="form-control">
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Correo electronico</label>
+          <input type="email" class="form-control" aria-describedby="emailHelp">
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="exampleInputPassword1">Contraseña</label>
+          <input type="password" class="form-control">
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="exampleInputPassword1">Confirmar contraseña</label>
+          <input type="password" class="form-control">
+        </div>
+      </div>
+    </div>
+    <hr>
+    <button class="btn btn-rounded bgyallow-1">Registrarse</button>
+    <p class="mt-2"><a @click.prevent="toggleModalType('provider-register')" href="#">Registrarse como proveedor</a></p>
+  </div>
+</template>
+
+<script>
+import { mapMutations } from "vuex";
+export default {
+  methods:{
+    ...mapMutations(['toggleModalType']),
+  },
+}
+</script>

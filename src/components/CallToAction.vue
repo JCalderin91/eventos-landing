@@ -15,7 +15,7 @@
           <div class="callout-btns">
             <!--blog entry column-->
             <a class="bgwhite c333" href="#">Condiciones</a>
-            <a class="bgyallow-1 c333" href="#">registrate</a>
+            <router-link tag="a" class="bgyallow-1 c333" to="/register">registrate</router-link>
           </div>
           <!--blog entry column end-->
         </div>

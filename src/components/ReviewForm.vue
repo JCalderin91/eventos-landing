@@ -7,7 +7,10 @@
         <img class="review-photo" src="images/listings/370x300/05.jpg" alt="feature item" />
       </div>
       <div class="col-sm-9">
-        <textarea class="input-field" placeholder="MESSAGE" name="message"></textarea>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Mensaje</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="review">
+  <div class="review card mb-2">
     <div class="row">
       <div class="col-sm-3 review-content-photo">
         <img class="review-photo" src="images/listings/370x300/05.jpg" alt="feature item" />
@@ -7,12 +7,14 @@
       </div>
       <div class="col-sm-9 ">
         <div class="review-body">
-          <div class="">
+          <div>
             <h6>the best noddle of the Macanao</h6>
             <i v-for="i in 5" :key="i" class="fa fa-star"></i>
             Hace 2 dias
           </div>
-          <div class="rating">8.0</div>
+          <div class="button">
+            <div class="btn btn-success">8.0 <i class="fa fa-trophy"></i></div>
+          </div>
         </div>
         <br>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium, dignissimos quisquam doloremque culpa,

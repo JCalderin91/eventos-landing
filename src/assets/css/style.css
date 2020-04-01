@@ -45,10 +45,7 @@
 	 RESET 
 --------------------------------------------------------------------------------------------------------------------------------
 */
-html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,figure, figcaption, footer, header, hgroup,menu, nav, output, ruby, section, summary,time, mark, audio, video {
-	margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;vertical-align: baseline;}
+
 
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
@@ -91,7 +88,8 @@ h4{font-size:24px;}
 h5{font-size:18px;}
 h6{font-size:16px;}
 p{
-	font-family:'Montserrat';
+	/*font-family:'Montserrat';*/
+
 	font-size:14px;
 	padding:0;
 	font-weight:400;
@@ -100,7 +98,8 @@ p{
 	text-decoration:none;
 	}
 a,ul,li{
-	font-family:'Montserrat';
+	/*font-family:'Montserrat';*/
+
 	font-size:14px;
 	padding:0;
 	font-weight:400;
@@ -462,7 +461,8 @@ a.toolbar-new-listing{
 	height:56px;
 	line-height:56px;
 	font-size:14px;
-	font-family:'Montserrat';
+	/*font-family:'Montserrat';*/
+
 	text-transform:capitalize;
 	padding:20px;
 	}
@@ -477,7 +477,8 @@ a.toolbar-new-listing{
 	height:56px;
 	line-height:56px;
 	font-size:14px;
-	font-family:'Montserrat';
+	/*font-family:'Montserrat';*/
+
 	text-transform:capitalize;
 	padding:0 0 0 20px;
 	-webkit-appearance: none;
@@ -492,7 +493,8 @@ a.toolbar-new-listing{
 .search-form-wrap form .select-field-wrap select.search-form-select .options{
 	padding:15px 20px;
 	font-size:13px;
-	font-family:'Montserrat';
+	/*font-family:'Montserrat';*/
+
 	border-top:1px solid #f7f7f7;
 	border-left:none;
 	border-right:none;
@@ -509,7 +511,8 @@ a.toolbar-new-listing{
 	height:56px;
 	line-height:56px;
 	font-size:14px;
-	font-family:'Montserrat';
+	/*font-family:'Montserrat';*/
+
 	text-transform:capitalize;
 	box-shadow:none;
 	border:none;
@@ -539,7 +542,8 @@ a.toolbar-new-listing{
 	height:56px;
 	line-height:56px;
 	font-size:14px;
-	font-family:'Montserrat';
+	/*font-family:'Montserrat';*/
+
 	text-transform:capitalize;
 	padding:20px;
 	border:none;
@@ -556,7 +560,8 @@ a.toolbar-new-listing{
 	height:56px;
 	line-height:56px;
 	font-size:14px;
-	font-family:'Montserrat';
+	/*font-family:'Montserrat';*/
+
 	text-transform:capitalize;
 	padding:0 0 0 20px;
 	-webkit-appearance: none;
@@ -572,7 +577,8 @@ a.toolbar-new-listing{
 .search-form-wrap2 form .select-field-wrap select.search-form-select .options{
 	padding:15px 20px;
 	font-size:13px;
-	font-family:'Montserrat';
+	/*font-family:'Montserrat';*/
+
 	border-top:1px solid #f7f7f7;
 	border-left:none;
 	border-right:none;
@@ -590,7 +596,8 @@ a.toolbar-new-listing{
 	height:56px;
 	line-height:56px;
 	font-size:14px;
-	font-family:'Montserrat';
+	/*font-family:'Montserrat';*/
+
 	text-transform:capitalize;
 	box-shadow:none;
 	border:none;
@@ -783,9 +790,11 @@ a.toolbar-new-listing{
     padding-bottom: 10px;
 }
 .feature-item .figure:hover .feature-content{bottom:10px;transition:all 0.5s ease;}
-.feature-item .feature-content .feature-title h6 a{letter-spacing:0; font-size:16px;text-transform:uppercase;text-align:left;font-family:'Montserrat';}
+.feature-item .feature-content .feature-title h6 a{letter-spacing:0; font-size:16px;text-transform:uppercase;text-align:left;/*font-family:'Montserrat';*/
+}
 .feature-item .feature-content .feature-location{}
-.feature-item .feature-content .feature-location a{font-family:'Montserrat';text-transform:capitalize;}
+.feature-item .feature-content .feature-location a{/*font-family:'Montserrat';*/
+text-transform:capitalize;}
 .feature-item .feature-content .feature-location a i{font-size:14px;line-height:14px;margin-right:5px;}
 
 .feature-item:hover .feature-overlay{opacity:1;transition:all 0.5s ease;}
@@ -808,7 +817,8 @@ a.toolbar-new-listing{
     line-height: 14px;
     margin-right: 0;
     padding: 0;
-	font-family:'Montserrat';
+	/*font-family:'Montserrat';*/
+
 	text-transform:uppercase;
 }
 .add-listing-nav .nav-tabs > li.active > a, .add-listing-nav .nav-tabs > li.active > a:focus, .add-listing-nav .nav-tabs > li.active > a:hover {border:none;}
@@ -863,10 +873,12 @@ a.toolbar-new-listing{
 .score-callback .star-on.fa-star {font-size:12px;}
 .listing-item .listing-content{padding:14px 30px 18px;position:absolute;left:0;right:0;bottom:0;text-align:left;transition:all 0.4s ease;}
 .listing-item .listing-content .listing-title{margin-top:10px;}
-.listing-item .listing-content .listing-title h6 a{letter-spacing:0; font-size:16px;text-transform:uppercase;text-align:left;font-family:'Montserrat';}
+.listing-item .listing-content .listing-title h6 a{letter-spacing:0; font-size:16px;text-transform:uppercase;text-align:left;/*font-family:'Montserrat';*/
+}
 .aside-layout-section .gridview .listing-item .listing-content .listing-title h6 a{font-size:14px;}
 .listing-item .listing-content .listing-location{}
-.listing-item .listing-content .listing-location a{font-family:'Montserrat';text-transform:capitalize;}
+.listing-item .listing-content .listing-location a{/*font-family:'Montserrat';*/
+text-transform:capitalize;}
 .listing-item .listing-content .listing-location a:nth-child(2){display:none;}
 .listing-item .listing-content .listing-location a i{font-size:12px;line-height:12px;margin-right:5px;}
 
@@ -1195,7 +1207,8 @@ a.toolbar-new-listing{
 	height:42px;
 	line-height:56px;
 	font-size:14px;
-	font-family:'Montserrat';
+	/*font-family:'Montserrat';*/
+
 	text-transform:capitalize;
 	padding:0 0 0 20px;
 	-webkit-appearance: none;
@@ -1211,7 +1224,8 @@ a.toolbar-new-listing{
 .sidebar .sidebar-listing-search-wrap form select.sidebar-listing-search-select option{
 	padding:15px 20px;
 	font-size:13px;
-	font-family:'Montserrat';
+	/*font-family:'Montserrat';*/
+
 	border-top:1px solid #f7f7f7;
 	border-left:none;
 	border-right:none;
@@ -1421,7 +1435,8 @@ a.toolbar-new-listing{
 /* contact form */
 
 .contact-form input{margin-bottom:30px;width:100%;}
-.contact-form input[placeholder], .contact-form textarea[placeholder]{font-family:'Montserrat';padding:20px 40px;}
+.contact-form input[placeholder], .contact-form textarea[placeholder]{/*font-family:'Montserrat';*/
+padding:20px 40px;}
 .contact-form textarea{margin-bottom:30px;width:100%;}
 .contact-form .contact-btn{
 	font-family: "Montserrat";
@@ -1833,7 +1848,7 @@ a.toolbar-new-listing{
 	}
 .listing-register-form .listing-form-field a{float:none;top:-8px;color:#08c2f3;}
 .listing-form-field input.submit{border:none;border-radius:4px;color:#fff;text-transform:uppercase;}
-label {display: inline;}
+
 label.checkbox-lable{position:relative;top:-8px;color:#999;}
 .regular-checkbox {display: none;}
 
@@ -1881,7 +1896,8 @@ select.listing-search-select{
 	height:42px;
 	line-height:56px;
 	font-size:14px;
-	font-family:'Montserrat';
+	/*font-family:'Montserrat';*/
+
 	text-transform:capitalize;
 	padding:0 0 0 20px;
 	-webkit-appearance: none;
@@ -1897,7 +1913,8 @@ select.listing-search-select{
 select.listing-search-select option{
 	padding:15px 20px;
 	font-size:13px;
-	font-family:'Montserrat';
+	/*font-family:'Montserrat';*/
+
 	border-top:1px solid #f7f7f7;
 	border-left:none;
 	border-right:none;
@@ -1919,4 +1936,11 @@ select.listing-search-select option{
 	border-radius: 3px;
 	color: white;
 	background-color: #ff3030;
+}
+.btn-rounded{
+	border-radius: 35px;
+}
+
+textarea:focus, input:focus, select:focus{
+	outline: none !important;
 }

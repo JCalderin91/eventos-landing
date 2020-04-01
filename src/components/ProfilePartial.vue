@@ -4,7 +4,7 @@
       <img src="images/carousel/03.jpg" alt="feature item">
     </div>
     <div :class="{'dark' : dark}" class="title">
-      <div class="name">Petronila mata</div>
+      <router-link to="/profile" class="name">Petronila mata</router-link>
       <div class="location">Macanao</div>
     </div>
     <div class="row">
@@ -45,7 +45,11 @@ export default {
 }
 
 .indicator {
+  padding: 0 3px;
   text-align: center;
+  p{
+    margin-top: 3px;
+  }
   p.dark,
   span.dark {
     color: white;
@@ -69,6 +73,7 @@ export default {
   margin: 15px 0;
   .name{
     margin-bottom: 3px;
+    font-size: 20px;
   }
   &.dark{
     color: white

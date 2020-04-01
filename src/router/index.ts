@@ -12,7 +12,7 @@ const routes = [
   },
   {
     path: '/service',
-    name: 'Service',
+    name: 'service',
     component: () => import('../views/Service.vue')
   },
   {
@@ -24,6 +24,21 @@ const routes = [
     path: '/profile',
     name: 'profile',
     component: () => import('../views/Profile.vue')
+  },
+  {
+    path: '/politics',
+    name: 'politics',
+    component: () => import('../views/Politics.vue')
+  },
+  {
+    path: '/about-us',
+    name: 'about-us',
+    component: () => import('../views/AboutUs.vue')
+  },
+  {
+    path: '/legals',
+    name: 'legals',
+    component: () => import('../views/Legals.vue')
   },
 ]
 

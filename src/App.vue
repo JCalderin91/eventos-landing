@@ -13,6 +13,7 @@
     <router-view/>
     <Suscription/>
     <Footer/>
+    <Modal/>
   
   </div>
 </template>
@@ -23,9 +24,10 @@ import Header from '@/components/Header'
 
 import Footer from '@/components/Footer'
 import Suscription from '@/components/Suscription'
+import Modal from '@/components/Modal'
 
 export default {
-  components: {Navbar, Header, Suscription, Footer }
+  components: {Navbar, Header, Suscription, Footer, Modal }
 }
 </script>
 

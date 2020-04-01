@@ -33,7 +33,7 @@
                         <a class="bgyallow-1 c333" href="#">Fitness</a>
                       </div>
                       <div class="listing-title">
-                        <h6><router-link to="/service">Best Car For Sale</router-link></h6>
+                        <h6><router-link :to="{name:'service', params: {title:'Best Car For Sale'}}">Best Car For Sale</router-link></h6>
                       </div>
                       <div class="listing-location pull-left">
                         <!-- location-->

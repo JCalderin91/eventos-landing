@@ -27,13 +27,13 @@
               </div>
             </div>
             <br>
-            <p>2 Resultados para <b>Restaurante</b></p>
+            <p>{{searchResults.length}} Resultados</p>
 
             <!-- ************************* -->
 
             <div class="section-items row">
-              <div class="col-md-6" v-for="i in 6" :key="i">
-                <Item/>
+              <div class="col-md-6 mb-3" v-for="result in searchResults" :key="result.id">
+                <Item :item="result"/>
               </div>
             </div>
           </div>
@@ -48,8 +48,21 @@
 <script>
 import SearchForm from '@/components/SearchForm'
 import Item from '@/components/Item'
+import { mapState, mapMutations } from 'vuex';
+
 export default {
-  components: { SearchForm, Item }
+  components: { SearchForm, Item },
+
+  mounted(){
+    console.log('asdasdasdasd');  
+    this.clearResults()     
+  },
+  methods:{
+    ...mapMutations(['clearResults'])
+  },
+  computed: {
+    ...mapState(['searchResults'])
+  },
 }
 </script>
 
