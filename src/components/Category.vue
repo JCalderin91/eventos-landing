@@ -42,7 +42,7 @@
 
 <script>
 
-  import {mapState} from 'vuex';
+  import {mapState, mapActions} from 'vuex';
 
   import { Hooper, Slide } from 'hooper';
   import 'hooper/dist/hooper.css';
@@ -56,27 +56,34 @@
       return {
         categories: [],
         hooperSettings: {
-          itemsToShow: 3,
-          infiniteScroll: true         
+          itemsToShow: 1,
+          infiniteScroll: true,
+          breakpoints: {
+            575: {
+              centerMode: false,
+              itemsToShow: 2
+            },
+            992: {
+              itemsToShow: 3,
+              pagination: 'fraction'
+            }
+          }       
         }
       }
     },
     mounted(){
       this.getCategories()
+        .then( res => this.categories = res )
+        .catch( err => console.log(err) )
     },
     methods: {
+      ...mapActions(['getCategories']),
       slidePrev() {
       this.$refs.carousel.slidePrev();
       },
       slideNext() {
         this.$refs.carousel.slideNext();
-      },
-      getCategories() {
-        fetch('http://eventos-back.wen:8080/api/categories')
-          .then(stream => stream.json())
-          .then(res => this.categories = res)
-          .catch(err => console.error(err));
-      }
+      },      
     },
     computed: {
       ...mapState(['baseUrl'])

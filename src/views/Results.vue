@@ -9,7 +9,7 @@
       <div class="row">
         <div class="col-md-8">
           <div class="card bgwhite">
-            <p>Filtros</p>
+            <!-- <p>Filtros</p>
             <div class="row">
               <div class="col-md-6">
                 <select class="listing-search-select">
@@ -26,19 +26,27 @@
                 </select>
               </div>
             </div>
-            <br>
-            <p>{{searchResults.length}} Resultados</p>
+            <br> -->
 
+            <p>Resultados de busqueda: {{searchResults.length}} </p>
             <!-- ************************* -->
-
-            <div class="section-items row">
+            <transition-group name="fade" mode="out-in" class="section-items row" tag="div">
               <div class="col-md-6 mb-3" v-for="result in searchResults" :key="result.id">
                 <Item :item="result"/>
               </div>
+            </transition-group>
+
+            <div v-if="searchResults.length == 0" class="no-search">
+              <img src="images/search.png" />
             </div>
+
           </div>
         </div>
-        <div class="col-md-4">Mapa</div>
+        <div class="col-md-4">
+          <div class="card">
+            Mapa
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -54,11 +62,16 @@ export default {
   components: { SearchForm, Item },
 
   mounted(){
-    console.log('asdasdasdasd');  
-    this.clearResults()     
+    console.log(this.$router)
+    if(this.$route.params.results){
+      this.search(this.$route.params.results)
+    }else{
+      this.clearResults()     
+      this.clearRequest()     
+    }
   },
   methods:{
-    ...mapMutations(['clearResults'])
+    ...mapMutations(['clearResults','clearRequest','search'])
   },
   computed: {
     ...mapState(['searchResults'])
@@ -77,6 +90,13 @@ export default {
     max-height: 800px;
     overflow-y: scroll;
     margin-top: 30px;
+  }
+  .no-search{
+    display: flex;
+    justify-content: center;
+    img{
+      width: 300px
+    }
   }
 
 </style>

@@ -46,7 +46,7 @@
     components: {
       Item,
       ProfilePartial
-    }
+    },
   }
 </script>
 

@@ -8,8 +8,14 @@ export default new Vuex.Store({
   state: {
     Modal: false,
     ModalType: '',
-    baseUrl: 'http://eventos-back.wen:8080/',
+    server: 'http://eventos-back.wen:8080/',
+    base: 'http://localhost:8081/',
     searchResults: [],
+    request: {
+      keywords: '',
+      category: 'all',
+      location: 'all'
+    },
   },
   mutations: {
     toggleModal(state, type){
@@ -25,18 +31,61 @@ export default new Vuex.Store({
     clearResults(state){
       state.searchResults = []
     },
+    clearRequest(state){
+      state.request = {
+        keywords: '',
+        category: 'all',
+        location: 'all'
+      }
+    },
   },
   actions: {
     search(context, payload){
       return new Promise((resolve, reject) => {
-        axios.get(context.state.baseUrl+'api/search-services', {params: payload})
+        axios.get(context.state.server+'api/search-services', {params: payload})
         .then( res => {
           context.commit('search', res.data)
           resolve(res)
         } )
         .catch( err => reject(err))
       })
-    }
+    },
+    getCategories(context){
+      return new Promise((resolve, reject) => {
+        axios.get(context.state.server+'api/categories')
+        .then( res => {
+          resolve(res.data)
+        })
+        .catch( err => reject(err))
+      })
+    },
+    getLocations(context){
+      return new Promise((resolve, reject) => {
+        axios.get(context.state.server+'api/locations')
+        .then( res => {
+          resolve(res.data)
+        })
+        .catch( err => reject(err))
+      })
+    },
+    getLastServices(context){
+      return new Promise((resolve, reject) => {
+        axios.get(context.state.server+'api/latest-services')
+        .then( res => {
+          resolve(res.data)
+        })
+        .catch( err => reject(err))
+      })
+    },
+    getService(context, id){
+      return new Promise((resolve, reject) => {
+        axios.get(context.state.server+'api/search-services/'+id)
+        .then( res => {
+          resolve(res.data)
+        })
+        .catch( err => reject(err))
+      })
+    },
   },
   modules: {
   }

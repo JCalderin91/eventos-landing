@@ -14,8 +14,8 @@
                   <div class="top-contact-info">
                     <ul>
                       <li class="toolbar-email"><i class="fa fa-envelope-o"></i>
-                        Support@designsvilla.com</li>
-                      <li class="toolbar-contact"><i class="fa fa-phone"></i> +92 123 456 7890
+                        info@eventosok.com</li>
+                      <li class="toolbar-contact"><i class="fa fa-phone"></i> +54 911 2722 5496
                       </li>
 
                     </ul>
@@ -38,7 +38,9 @@
           <!--Main Menu HTML Code-->
           <nav class="wsmenu slideLeft clearfix">
             <div class="logo pull-left">
-              <router-link to="/" title="Responsive Slide Menus"><img src="images/logo.png" alt="" /></router-link>
+              <router-link to="/" class="logo-content" title="Responsive Slide Menus">
+                <img :src="base+'images/logo.png'" alt="" /> <span>ventosOK</span>
+              </router-link>
             </div>
             <ul class="mobile-sub wsmenu-list pull-right">
               <li><router-link tag="a"  to="/about-us" class="">Quienes somos</router-link></li>
@@ -71,13 +73,29 @@
       color: white
     }
   }
+  .wsmenu .logo{
+    .logo-content{
+      display: flex;
+      align-items:center;
+      span{
+        font-size: 26px;
+        color: white;
+      }
+    }
+    img{
+      height: 55px;
+    }
+  }
 </style>
 
 <script>
-import {mapMutations} from 'vuex';
+import {mapMutations, mapState} from 'vuex';
 export default {
   methods:{
     ...mapMutations(['toggleModal'])
+  },
+  computed: {
+    ...mapState(['base'])
   }
 }
 </script>

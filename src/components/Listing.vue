@@ -12,15 +12,17 @@
           <div class="box"></div>
           <div class="line"></div>
         </div>
-        <p>We help new customers & search engines to find your business online</p>
+        <p class="text-center">We help new customers & search engines to find your business online</p>
       </div><!-- section title end -->
       <div class="add-listing-wrapper">
         <div class="listing-main gridview tab-content">
           <div id="latest-listing" class="tab-pane active">
             <div class="listing-wrapper row">
-              <div class="item col-md-4 col-sm-6 col-xs-12">
+
+              <div v-for="service in services" :key="service.id" class="item col-md-4 col-sm-6 col-xs-12">
                 <!-- .ITEM -->
                 <div class="listing-item clearfix">
+                 <div v-if="isCombo(service)" class="tag-combo">Oferta</div>
                   <div class="figure">
                     <img src="images/listings/370x300/01.jpg" alt="feature item" />
                     <div class="item-love"><a href="#"><i class="fa fa-heart-o"></i><i class="fa fa-heart "></i></a>
@@ -30,10 +32,16 @@
                     </div>
                     <div class="listing-content clearfix">
                       <div class="listing-meta-cat">
-                        <a class="bgyallow-1 c333" href="#">Fitness</a>
+                        <a class="bgyallow-1 c333" href="#">
+                          {{isCombo(service) ? 'combo' : 'servicio'}}
+                        </a>
                       </div>
                       <div class="listing-title">
-                        <h6><router-link :to="{name:'service', params: {title:'Best Car For Sale'}}">Best Car For Sale</router-link></h6>
+                        <h6>
+                          <router-link :to="{name:'service', params: {id:service.id}}">
+                            {{isCombo(service) ? service.nombre_combo_servicio : service.nombre_servicio}}
+                          </router-link>
+                        </h6>
                       </div>
                       <div class="listing-location pull-left">
                         <!-- location-->
@@ -46,152 +54,8 @@
                     </div>
                   </div>
                 </div>
-              </div><!-- /.ITEM -->
-              <div class="item col-md-4 col-sm-6 col-xs-12">
-                <!-- .ITEM -->
-                <div class="listing-item clearfix">
-                  <div class="figure">
-                    <img src="images/listings/370x300/02.jpg" alt="feature item" />
-                    <div class="item-love"><a href="#"><i class="fa fa-heart-o"></i><i class="fa fa-heart "></i></a>
-                    </div>
-                    <div class="hover-overlay">
-                      <div class="hover-overlay-inner"></div>
-                    </div>
-                    <div class="listing-content clearfix">
-                      <div class="listing-meta-cat">
-                        <a class="bgyallow-1 c333" href="#">Fitness</a>
-                      </div>
-                      <div class="listing-title">
-                        <h6><router-link to="/service">Best Car For Sale</router-link></h6>
-                      </div>
-                      <div class="listing-location pull-left">
-                        <!-- location-->
-                        <a href="#"><i class="fa fa-map-marker"></i>new york city</a>
-                      </div><!-- location end-->
-                      <div class="star-rating pull-right">
-                        <!-- rating-->
-                        <div class="score-callback" data-score="5"></div>
-                      </div><!-- rating end-->
-                    </div>
-                  </div>
-                </div>
-              </div><!-- /.ITEM -->
-              <div class="item col-md-4 col-sm-6 col-xs-12">
-                <!-- .ITEM -->
-                <div class="listing-item clearfix">
-                  <div class="figure">
-                    <img src="images/listings/370x300/03.jpg" alt="feature item" />
-                    <div class="item-love"><a href="#"><i class="fa fa-heart-o"></i><i class="fa fa-heart "></i></a>
-                    </div>
-                    <div class="hover-overlay">
-                      <div class="hover-overlay-inner"></div>
-                    </div>
-                    <div class="listing-content clearfix">
-                      <div class="listing-meta-cat">
-                        <a class="bgyallow-1 c333" href="#">Fitness</a>
-                      </div>
-                      <div class="listing-title">
-                        <h6><router-link to="/service">Best Car For Sale</router-link></h6>
-                      </div>
-                      <div class="listing-location pull-left">
-                        <!-- location-->
-                        <a href="#"><i class="fa fa-map-marker"></i>new york city</a>
-                      </div><!-- location end-->
-                      <div class="star-rating pull-right">
-                        <!-- rating-->
-                        <div class="score-callback" data-score="5"></div>
-                      </div><!-- rating end-->
-                    </div>
-                  </div>
-                </div>
-              </div><!-- /.ITEM -->
-              <div class="item col-md-4 col-sm-6 col-xs-12">
-                <!-- .ITEM -->
-                <div class="listing-item clearfix">
-                  <div class="figure">
-                    <img src="images/listings/370x300/04.jpg" alt="feature item" />
-                    <div class="item-love"><a href="#"><i class="fa fa-heart-o"></i><i class="fa fa-heart "></i></a>
-                    </div>
-                    <div class="hover-overlay">
-                      <div class="hover-overlay-inner"></div>
-                    </div>
-                    <div class="listing-content clearfix">
-                      <div class="listing-meta-cat">
-                        <a class="bgyallow-1 c333" href="#">Fitness</a>
-                      </div>
-                      <div class="listing-title">
-                        <h6><router-link to="/service">Best Car For Sale</router-link></h6>
-                      </div>
-                      <div class="listing-location pull-left">
-                        <!-- location-->
-                        <a href="#"><i class="fa fa-map-marker"></i>new york city</a>
-                      </div><!-- location end-->
-                      <div class="star-rating pull-right">
-                        <!-- rating-->
-                        <div class="score-callback" data-score="5"></div>
-                      </div><!-- rating end-->
-                    </div>
-                  </div>
-                </div>
-              </div><!-- /.ITEM -->
-              <div class="item col-md-4 col-sm-6 col-xs-12">
-                <!-- .ITEM -->
-                <div class="listing-item clearfix">
-                  <div class="figure">
-                    <img src="images/listings/370x300/05.jpg" alt="feature item" />
-                    <div class="item-love"><a href="#"><i class="fa fa-heart-o"></i><i class="fa fa-heart "></i></a>
-                    </div>
-                    <div class="hover-overlay">
-                      <div class="hover-overlay-inner"></div>
-                    </div>
-                    <div class="listing-content clearfix">
-                      <div class="listing-meta-cat">
-                        <a class="bgyallow-1 c333" href="#">Fitness</a>
-                      </div>
-                      <div class="listing-title">
-                        <h6><router-link to="/service">Best Car For Sale</router-link></h6>
-                      </div>
-                      <div class="listing-location pull-left">
-                        <!-- location-->
-                        <a href="#"><i class="fa fa-map-marker"></i>new york city</a>
-                      </div><!-- location end-->
-                      <div class="star-rating pull-right">
-                        <!-- rating-->
-                        <div class="score-callback" data-score="5"></div>
-                      </div><!-- rating end-->
-                    </div>
-                  </div>
-                </div>
-              </div><!-- /.ITEM -->
-              <div class="item col-md-4 col-sm-6 col-xs-12">
-                <!-- .ITEM -->
-                <div class="listing-item clearfix">
-                  <div class="figure">
-                    <img src="images/listings/370x300/06.jpg" alt="feature item" />
-                    <div class="item-love"><a href="#"><i class="fa fa-heart-o"></i><i class="fa fa-heart "></i></a>
-                    </div>
-                    <div class="hover-overlay">
-                      <div class="hover-overlay-inner"></div>
-                    </div>
-                    <div class="listing-content clearfix">
-                      <div class="listing-meta-cat">
-                        <a class="bgyallow-1 c333" href="#">Fitness</a>
-                      </div>
-                      <div class="listing-title">
-                        <h6><router-link to="/service">Best Car For Sale</router-link></h6>
-                      </div>
-                      <div class="listing-location pull-left">
-                        <!-- location-->
-                        <a href="#"><i class="fa fa-map-marker"></i>new york city</a>
-                      </div><!-- location end-->
-                      <div class="star-rating pull-right">
-                        <!-- rating-->
-                        <div class="score-callback" data-score="5"></div>
-                      </div><!-- rating end-->
-                    </div>
-                  </div>
-                </div>
-              </div><!-- /.ITEM -->
+              </div><!-- /.ITEM -->     
+
             </div>
           </div>
         </div>
@@ -199,3 +63,43 @@
     </div><!-- section container end -->
   </section>
 </template>
+
+<script>
+import { mapActions } from 'vuex'
+export default {
+  data: () => ({
+    services: []
+  }),
+  mounted(){
+    this.getLastServices()
+      .then( res => this.services = res )
+      .catch( err => console.log(err) )
+  },
+  methods: {
+    ...mapActions(['getLastServices']),
+    isCombo(item){
+      return item.nombre_servicio ? false : true
+    }
+  }
+}
+</script>
+
+<style lang="scss" scope>
+  .listing-wrapper{
+    .listing-item{
+      overflow: hidden;
+      .tag-combo{
+        position: absolute;
+        background-color: rgb(248, 29, 29);
+        z-index: 2;
+        transform: rotate(-45deg);
+        padding: 5px 50px;
+        top: 20px;
+        left: -40px;
+        color: white;
+        border: 3px rgb(250, 153, 153) dotted;
+        
+      }
+    }
+  }
+</style>

@@ -4,8 +4,7 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-6">
-            <h5 class="text-left">{{ title }} <span class="text-success">$200</span></h5>
-            <p class="text-left">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <h4 class="text-left">{{ service.nombre_servicio ? service.nombre_servicio : service.nombre_combo_servicio }} <span class="text-success">${{service.monto_servicio}}</span></h4>
           </div>
           <div class="col-sm-6 actions">
             <div class="btn btn-success mr-2">8.0 <i class="fa fa-trophy"></i></div>
@@ -18,14 +17,7 @@
       <div class="row">
         <div class="col-md-8">
           <div class="card">
-            <p class="parraf">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates exercitationem neque
-              id veniam, adipisci officiis aperiam eos, fugiat ad aut dolores sit tempora incidunt laboriosam dolorum
-              deserunt quaerat expedita. Dolorum eveniet, quasi cumque repudiandae ipsum hic quibusdam illo voluptas eos
-              repellendus exercitationem, quam incidunt, dolores iure doloribus necessitatibus? Quidem, error.</p>
-            <p class="parraf">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates exercitationem neque
-              id veniam, adipisci officiis aperiam eos, fugiat ad aut dolores sit tempora incidunt laboriosam dolorum
-              deserunt quaerat expedita. Dolorum eveniet, quasi cumque repudiandae ipsum hic quibusdam illo voluptas eos
-              repellendus exercitationem, quam incidunt, dolores iure doloribus necessitatibus? Quidem, error.</p>
+            <p class="parraf">{{service.descripcion_servicio}}</p>
 
             <div class="service-categories row">
               <div v-for="i in 6" :key="i" class="col-sm-4">
@@ -47,28 +39,35 @@
             <Review v-for="i in 3" :key="i"/>
           </div>
         </div>
-        <div class="col-md-4">
-          Mapa
-          <Profile-partial/>
+        <div v-if="!isLoading" class="col-md-4">
+          <Info-partial :provider="service.provider"/>
+          <Profile-partial :provider="service.provider"/>
         </div>
       </div>
     </div>
+    <pre>{{service}}</pre>
   </div>
 </template>
 <script>
 import ReviewForm from '@/components/ReviewForm'
 import Review from '@/components/Review'
 import ProfilePartial from '@/components/ProfilePartial'
+import InfoPartial from '@/components/InfoPartial'
+import {mapActions} from 'vuex'
 export default {
-  components: {ReviewForm, Review, ProfilePartial},
-  mounted(){
-    console.log(this.$route.params);
-    
+  components: {ReviewForm, Review, ProfilePartial, InfoPartial},
+  data: () => ({
+    isLoading: true,
+    service: {}
+  }),
+  mounted(){  
+    this.getService(this.$route.params.id)
+      .then( res => this.service = res)
+      .catch( err => console.log(err) )
+      .finally( () => this.isLoading = false)
   },
-  computed: {
-    title(){
-      return this.$route.params.title ? this.$route.params.title : 'tastsi noddle'
-    }
+  methods:{
+    ...mapActions(['getService']),
   }
 }
 </script>

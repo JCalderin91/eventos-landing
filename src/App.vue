@@ -10,7 +10,9 @@
   <div class="theme-wrap clearfix">
     <Navbar/>
     <Header/>
-    <router-view/>
+    <transition name="fade" mode="out-in">
+      <router-view/>
+    </transition>
     <Suscription/>
     <Footer/>
     <Modal/>
@@ -27,7 +29,7 @@ import Suscription from '@/components/Suscription'
 import Modal from '@/components/Modal'
 
 export default {
-  components: {Navbar, Header, Suscription, Footer, Modal }
+  components: {Navbar, Header, Suscription, Footer, Modal },
 }
 </script>
 

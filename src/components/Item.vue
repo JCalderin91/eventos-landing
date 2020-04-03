@@ -8,7 +8,11 @@
         <span>$ {{item.monto_servicio}}</span>
       </div>
       <br>
-      <p>{{item.descripcion_servicio}}</p>
+      <p class="text-content">
+        {{item.descripcion_servicio}}
+      </p>
+      <div class="mask"></div>
+      <router-link :to="{name:'service', params: {id:item.id}}" class="text-center mt-2">Mas información</router-link>
       <hr>
       <div class="row">
         <div class="col-md-6 text-uppercase">
@@ -16,7 +20,7 @@
           Cumanacoa</p>
         </div>
         <div class="col-md-6 text-uppercase">
-          <p class="text-success">Abierto</p>
+          <p class="text-success text-right">Abierto</p>
         </div>
       </div>
     </div>
@@ -42,5 +46,14 @@ export default {
     padding: 10px;
     border-radius: 3px;
     color: white;
+  }
+  .text-content{
+    height: 100px;
+    overflow: hidden;
+  }
+  .mask{
+    background: linear-gradient(transparent, #fffffff2 100%);
+    height: 40px;
+    margin-top: -40px;
   }
 </style>

@@ -14,8 +14,8 @@
           <!--blog entry column end-->
           <div class="callout-btns">
             <!--blog entry column-->
-            <a class="bgwhite c333" href="#">Condiciones</a>
-            <router-link tag="a" class="bgyallow-1 c333" to="/register">registrate</router-link>
+            <router-link tag="a" class="bgwhite c333" :to="{name:'legals'}">Condiciones</router-link>
+            <router-link tag="a" class="bgyallow-1 c333" :to="{name:'register'}">registrate</router-link>
           </div>
           <!--blog entry column end-->
         </div>

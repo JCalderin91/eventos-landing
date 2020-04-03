@@ -10,7 +10,7 @@
               <h5>Nosotros</h5>
             </div>
             <div class="footer-logo">
-              <a href="#"><img src="images/footer-logo.png" alt="footer logo"></a>
+              <a href="#"><img :src="base+'images/logo.png'" alt="footer logo"></a>
             </div>
             <div class="footer-intro">
               <p>Lorem ipsum dolor sit amet sectetuer
@@ -19,7 +19,7 @@
                 dolore amet magna.
               </p>
               <p><span>Dirección: </span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae soluta molestiae illo.</p>
-              <p><span>Teléfono: </span>+52 145 4852</p>
+              <p><span>Teléfono: </span>+54 911 2722 5496</p>
               
             </div>
           </div>
@@ -78,6 +78,14 @@
     </div>
   </footer>
 </template>
+<script>
+import { mapState } from 'vuex'
+export default {
+  computed: {
+    ...mapState(['base'])
+  }
+}
+</script>
 
 <style lang="scss" scope>
   .footer-bottom {
@@ -94,6 +102,9 @@
         }
       }
     }
+  }
+  .footer-logo img{
+    height: 100px;
   }
 
   .footer-intro {

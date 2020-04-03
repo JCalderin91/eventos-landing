@@ -15,6 +15,10 @@ import "@/assets/css/responsive.css"
 
 Vue.config.productionTip = false
 
+router.afterEach(() => {
+  window.scrollTo(0,0)
+})
+
 new Vue({
   router,
   store,

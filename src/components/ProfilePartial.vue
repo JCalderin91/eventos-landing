@@ -1,11 +1,11 @@
-<template>
-  <div class="user-section">
+<template> 
+  <div :class="{'card': !dark}" class="user-section mb-2">
     <div class="profile-photo">
-      <img src="images/carousel/03.jpg" alt="feature item">
+      <img :src="base+'images/carousel/03.jpg'" alt="feature item">
     </div>
     <div :class="{'dark' : dark}" class="title">
-      <router-link to="/profile" class="name">Petronila mata</router-link>
-      <div class="location">Macanao</div>
+      <router-link to="/profile" class="name">{{provider.nombre_fantasia}}</router-link>
+      <div class="location">{{provider.location.name}}</div>
     </div>
     <div class="row">
       <div class="col-xs-4 indicator">
@@ -25,12 +25,20 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   props: {
     dark:{
       type: Boolean,
       default: false,
+    },
+    provider: {
+      type: Object,
+      required: true,
     }
+  },
+  computed: {
+    ...mapState(['base'])
   }
 } 
 </script>
@@ -38,7 +46,6 @@ export default {
 <style lang="scss" scope>
 .user-section {
   padding: 20px;
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
