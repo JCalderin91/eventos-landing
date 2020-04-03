@@ -15,7 +15,7 @@
           <div class="callout-btns">
             <!--blog entry column-->
             <router-link tag="a" class="bgwhite c333" :to="{name:'legals'}">Condiciones</router-link>
-            <router-link tag="a" class="bgyallow-1 c333" :to="{name:'register'}">registrate</router-link>
+            <a class="bgyallow-1 c333" @click.prevent="toggleModal('user-register')">registrate</a>
           </div>
           <!--blog entry column end-->
         </div>
@@ -23,3 +23,12 @@
     </div><!-- section container end -->
   </section>
 </template>
+
+<script>
+import { mapMutations } from 'vuex'
+export default {
+  methods: {
+    ...mapMutations(['toggleModal'])
+  }
+}
+</script>

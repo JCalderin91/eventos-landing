@@ -15,7 +15,14 @@ import "@/assets/css/responsive.css"
 
 Vue.config.productionTip = false
 
-router.afterEach(() => {
+
+router.afterEach((from, to) => {
+  if(from.name !== 'home' && from.name !== 'service' && to.name==='results')
+  {
+    console.log('BORRAR');    
+  }
+
+  
   window.scrollTo(0,0)
 })
 

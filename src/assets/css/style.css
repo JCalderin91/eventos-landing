@@ -1941,3 +1941,10 @@ textarea:focus, input:focus, select:focus{
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
+
+
+.wsmenu-list li a.router-link-exact-active.router-link-active,
+.wsmenu-list li a.router-link-exact-active.router-link-active {
+	color: var(--color);
+	border-color: var(--color);
+}

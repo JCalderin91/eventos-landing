@@ -36,16 +36,17 @@
           </div>
           <!--header toolbar end-->
           <!--Main Menu HTML Code-->
-          <nav class="wsmenu slideLeft clearfix">
+          <nav class="wsmenu slideLeft clearfix" :class="{'menuopen':menuopen}">
             <div class="logo pull-left">
               <router-link to="/" class="logo-content" title="Responsive Slide Menus">
-                <img :src="base+'images/logo.png'" alt="" /> <span>ventosOK</span>
+                <img :src="base+'/images/logo.png'" alt="" /> <span>ventosOK</span>
               </router-link>
             </div>
             <ul class="mobile-sub wsmenu-list pull-right">
-              <li><router-link tag="a"  to="/about-us" class="">Quienes somos</router-link></li>
-              <li><router-link tag="a"  to="/legals" class="">condiciones legales</router-link></li>
-              <li><router-link tag="a"  to="/politics">politicas</router-link></li>
+              <li @click="toggleMenu(false)"><router-link tag="a" :to="{name:'home'}" class="">Inicio</router-link></li>
+              <li @click="toggleMenu(false)"><router-link tag="a" :to="{name:'about-us'}" class="">Quienes somos</router-link></li>
+              <li @click="toggleMenu(false)"><router-link tag="a" :to="{name: 'legals'}" class="">condiciones legales</router-link></li>
+              <li @click="toggleMenu(false)"><router-link tag="a" :to="{name: 'politics'}">politicas</router-link></li>
               <li><a @click.prevent="toggleModal('user-register')">registrase</a></li>
               <!-- <li><a href="#">pages</a>
                 <ul class="wsmenu-submenu">
@@ -92,10 +93,10 @@
 import {mapMutations, mapState} from 'vuex';
 export default {
   methods:{
-    ...mapMutations(['toggleModal'])
+    ...mapMutations(['toggleModal','toggleMenu'])
   },
   computed: {
-    ...mapState(['base'])
+    ...mapState(['base','menuopen'])
   }
 }
 </script>

@@ -11,32 +11,32 @@ const routes = [
     component: Home
   },
   {
-    path: '/service/:id',
+    path: '/servicio/:id',
     name: 'service',
     component: () => import('../views/Service.vue')
   },
   {
-    path: '/results',
+    path: '/resultados',
     name: 'results',
     component: () => import('../views/Results.vue')
   },
   {
-    path: '/profile',
+    path: '/perfil',
     name: 'profile',
     component: () => import('../views/Profile.vue')
   },
   {
-    path: '/politics',
+    path: '/politicas-de-uso',
     name: 'politics',
     component: () => import('../views/Politics.vue')
   },
   {
-    path: '/about-us',
+    path: '/contactenos',
     name: 'about-us',
     component: () => import('../views/AboutUs.vue')
   },
   {
-    path: '/legals',
+    path: '/terminos-legales',
     name: 'legals',
     component: () => import('../views/Legals.vue')
   },
@@ -47,5 +47,8 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
+
+
 
 export default router

@@ -91,4 +91,16 @@ export default {
     opacity: 0.4;
     cursor: no-drop;
   }
+  @media only screen and (max-width: 767px){
+    .search-form-wrap2 form .input-field-wrap input.search-form-input {
+      height: 23px !important;
+      padding: 20px !important;
+      line-height: inherit !important;
+    }
+    .search-form-wrap2 form .submit-field-wrap .search-form-submit,
+    .search-form-wrap2 form .select-field-wrap select.search-form-select {
+      height: 40px !important;
+      line-height: inherit !important;
+    }
+  }
 </style>

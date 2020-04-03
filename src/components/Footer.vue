@@ -10,7 +10,7 @@
               <h5>Nosotros</h5>
             </div>
             <div class="footer-logo">
-              <a href="#"><img :src="base+'images/logo.png'" alt="footer logo"></a>
+              <router-link :to="{name:'home'}"><img :src="base+'/images/logo.png'" alt="footer logo"></router-link>
             </div>
             <div class="footer-intro">
               <p>Lorem ipsum dolor sit amet sectetuer

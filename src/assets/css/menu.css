@@ -511,7 +511,7 @@
 	
 .wsmenuexpandermain{
 	display:block !important;
-	position:relative;
+	position:absolute;
 	top:0;
 	right:0;
 	left:0;
@@ -636,14 +636,15 @@
 	background-color:transparent;
 	color:#666;
 	line-height:25px;
-	border-bottom:1px solid #eee;
 	position:static;
 	}
 	
 .wsmenu > .wsmenu-list > li > a > .fa{font-size: 16px; color:#bfbfbf;}
 .wsmenu .wsmenu-list li a .arrow:after{ display:none !important; }
 .wsmenu .wsmenu-list li ul li a .fa.fa-caret-right{ font-size:12px !important; color:#8E8E8E; }
-
+.mobile-sub{
+	padding-top: 20px !important;
+}
 .mobile-sub .wsmenu-submenu{
 	transform:none !important;
 	opacity:1 !important;

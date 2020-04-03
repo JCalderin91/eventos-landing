@@ -11,7 +11,7 @@
     <Navbar/>
     <Header/>
     <transition name="fade" mode="out-in">
-      <router-view/>
+      <router-view class="body-page"/>
     </transition>
     <Suscription/>
     <Footer/>
@@ -34,5 +34,9 @@ export default {
 </script>
 
 <style lang="scss">
- 
+
+  @media only screen and (max-width: 1200px){
+    .body-page{margin-top: 50px;}
+  }
+
 </style>

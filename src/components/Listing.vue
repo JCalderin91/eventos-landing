@@ -1,7 +1,7 @@
 <template>
   <!--================================LISTING SECTION ==========================================-->
 
-  <section class="listing-section padding-top-100 padding-bottom-70 bgwhite">
+  <section class="listing-section padding-top-60 padding-bottom-30 bgwhite">
     <div class="container">
       <!-- section container -->
       <div class="section-title-wrap margin-bottom-50">
@@ -31,10 +31,13 @@
                       <div class="hover-overlay-inner"></div>
                     </div>
                     <div class="listing-content clearfix">
-                      <div class="listing-meta-cat">
+                      <div v-if="!isCombo(service)" class="listing-meta-cat">
                         <a class="bgyallow-1 c333" href="#">
-                          {{isCombo(service) ? 'combo' : 'servicio'}}
+                          {{ service.sucategory_service.category_service.nombre_servicio }}
                         </a>
+                        <!-- <a class="bgyallow-1 c333" href="#">
+                          {{ service.sucategory_service.nombre_subservicio }}
+                        </a> -->
                       </div>
                       <div class="listing-title">
                         <h6>
@@ -45,7 +48,7 @@
                       </div>
                       <div class="listing-location pull-left">
                         <!-- location-->
-                        <a href="#"><i class="fa fa-map-marker"></i>new york city</a>
+                        <a href="#"><i class="fa fa-map-marker"></i>{{service.provider.location.name}}</a>
                       </div><!-- location end-->
                       <div class="star-rating pull-right">
                         <!-- rating-->
@@ -79,8 +82,8 @@ export default {
     ...mapActions(['getLastServices']),
     isCombo(item){
       return item.nombre_servicio ? false : true
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -88,6 +91,12 @@ export default {
   .listing-wrapper{
     .listing-item{
       overflow: hidden;
+      .listing-meta-cat{
+        display: flex;
+        a{
+          margin: 0 3px;
+        }
+      }
       .tag-combo{
         position: absolute;
         background-color: rgb(248, 29, 29);

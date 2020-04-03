@@ -39,8 +39,10 @@ export default {
 <style lang="scss" scope>
   .fade.show{
     display: block;
-    padding-right: 21px;
     background-color: rgba(0,0,0,.5)
+  }
+  .modal{
+    overflow: scroll;
   }
   .modal-content.card{
     padding-top: 35px;

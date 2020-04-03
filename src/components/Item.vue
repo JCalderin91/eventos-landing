@@ -2,14 +2,14 @@
   <div>
     <img src="images/listings/370x300/05.jpg" alt="feature item" />
     <div class="card">
-      <h6>{{item.nombre_servicio}}</h6>
+      <h6>{{item.nombre_servicio ? item.nombre_servicio :item.nombre_combo_servicio}}</h6>
       <div class="d-flex justify-content-between align-items-center mt-2">
         <div class="btn btn-success">8.0 <i class="fa fa-trophy"></i></div>
-        <span>$ {{item.monto_servicio}}</span>
+        <span>$ {{item.monto_servicio? item.monto_servicio : item.monto_combo}}</span>
       </div>
       <br>
       <p class="text-content">
-        {{item.descripcion_servicio}}
+        {{item.descripcion_servicio?item.descripcion_servicio:item.descripcion_combo}}
       </p>
       <div class="mask"></div>
       <router-link :to="{name:'service', params: {id:item.id}}" class="text-center mt-2">Mas información</router-link>

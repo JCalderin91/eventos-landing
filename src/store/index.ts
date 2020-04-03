@@ -6,10 +6,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    menuopen: false,
     Modal: false,
     ModalType: '',
     server: 'http://eventos-back.wen:8080/',
-    base: 'http://localhost:8081/',
+    base: window.origin,
     searchResults: [],
     request: {
       keywords: '',
@@ -18,7 +19,11 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    toggleMenu(state, value){     
+      state.menuopen = (value == false) ? false : !state.menuopen
+    },
     toggleModal(state, type){
+      state.menuopen = false
       state.ModalType = type      
       state.Modal = !state.Modal
     },

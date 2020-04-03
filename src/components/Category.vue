@@ -1,14 +1,14 @@
 <template>
   <!--================================CATEGORY SECTION ==========================================-->
 
-  <section class="categories-section padding-bottom-30">
+  <section class="categories-section padding-bottom-10">
     <!-- content area column -->
     <div class="container">
       <div
         class="section-title-nav section-title-wrap shadow-1 bgwhite padding-bottom-30 padding-top-30 margin-bottom-50">
         <!-- section title -->
         <h5>Nuestras <span>Categorias</span></h5>
-        <div class="owl-nav">
+        <div class="owl-nav d-flex pr-2">
           <div @click.prevent="slidePrev" class="owl-prev"><i class="fa fa-angle-left"></i></div>
           <div @click.prevent="slideNext" class="owl-next"><i class="fa fa-angle-right"></i></div>
         </div>
