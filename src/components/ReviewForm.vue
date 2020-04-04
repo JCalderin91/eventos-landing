@@ -4,7 +4,7 @@
     <hr>
     <div class="row">
       <div class="col-sm-3 user-review">
-        <img class="review-photo" :src="base+'/images/listings/370x300/05.jpg'" alt="feature item" />
+        <img class="review-photo" :src="base+'/images/listings/370x300/06.jpg'" alt="feature item" />
         <h6 class="mt-2">Petronila mata</h6>
       </div>
       <div class="col-sm-9">

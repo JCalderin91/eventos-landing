@@ -17,6 +17,7 @@ export default new Vuex.Store({
       category: 'all',
       location: 'all'
     },
+    isLogged: false,
   },
   mutations: {
     setRequest(state, request){     

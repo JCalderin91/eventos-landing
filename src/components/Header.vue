@@ -47,18 +47,9 @@
               <li @click="toggleMenu(false)"><router-link tag="a" :to="{name:'about-us'}" class="">Quienes somos</router-link></li>
               <li @click="toggleMenu(false)"><router-link tag="a" :to="{name: 'legals'}" class="">condiciones legales</router-link></li>
               <li @click="toggleMenu(false)"><router-link tag="a" :to="{name: 'politics'}">politicas</router-link></li>
-              <li><a @click.prevent="toggleModal('user-register')">registrase</a></li>
-              <!-- <li><a href="#">pages</a>
-                <ul class="wsmenu-submenu">
-                  <li><a href="about.html">About</a></li>
-                  <li><a href="blog.html">Blog</a></li>
-                  <li><a href="single.html">Blog Single</a></li>
-                  <li><a href="single-listing.html">listing Single</a></li>
-                  <li><a href="404.html">Error 404</a></li>
-
-                </ul>
-              </li> -->
-              <li><a @click.prevent="toggleModal('login-form')" class="toolbar-new-listing"> Acceder</a></li>
+              <li v-if="!isLogged"><a @click.prevent="toggleModal('user-register')">registrase</a></li>
+              <li v-if="!isLogged"><a @click.prevent="toggleModal('login-form')" class="toolbar-new-listing"> Acceder</a></li>
+              <li v-else><a class="toolbar-new-listing"> Cerrar sesión</a></li>
             </ul>
           </nav>
         </div>
@@ -96,7 +87,7 @@ export default {
     ...mapMutations(['toggleModal','toggleMenu'])
   },
   computed: {
-    ...mapState(['base','menuopen'])
+    ...mapState(['base','menuopen','isLogged'])
   }
 }
 </script>

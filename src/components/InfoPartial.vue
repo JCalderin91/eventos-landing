@@ -1,14 +1,14 @@
 <template>
   <div id="info-card" class="card mb-3">
     <div class="contact-info">
-      <img src="images/map.jpg" class="img-fluid" alt="#">
+      <Map :lat="provider.latitud" :lng="provider.longitud" />
       <div class="item">
         <span class="fa fa-map"></span>
         <p>{{provider.direccion_domicilio}}</p>
       </div>
       <div class="item">
         <span class="fa fa-phone"></span>
-        <p> +44 20 7336 8898</p>
+        <p> {{provider.detail_provider.telefono_principal}}</p>
       </div>
       <div class="item">
         <span class="fa fa-link"></span>
@@ -24,7 +24,9 @@
 </template>
 
 <script>
+import Map from '@/components/Map'
 export default {
+  components: {Map},
   props: {
     provider: {
       type: Object,

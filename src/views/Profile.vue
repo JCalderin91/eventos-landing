@@ -1,7 +1,7 @@
 <template>
   <div class="profile">
     <div class="header-profile">
-      <img class="header-photo" :src="base+'/images/carousel/03.jpg'" alt="feature item">
+      <img class="header-photo" :src="base+'/images/carousel/04.jpg'" alt="feature item">
       <div class="container">
 
         <div class="row">

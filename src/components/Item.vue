@@ -2,7 +2,7 @@
   <div>
     <img v-if="isCombo(item)" class="tag-combo" src="images/oferta.svg" alt="feature item" />
 
-    <img src="images/listings/370x300/05.jpg" alt="feature item" />
+    <img src="images/listings/370x300/04.jpg" alt="feature item" />
     <div class="card">
       <h6>{{!isCombo(item) ? item.nombre_servicio :item.nombre_combo_servicio}}</h6>
       <div class="d-flex justify-content-between align-items-center mt-2">

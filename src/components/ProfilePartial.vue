@@ -1,7 +1,7 @@
 <template> 
   <div :class="{'card': !dark}" class="user-section mb-2">
     <div class="profile-photo">
-      <img :src="base+'/images/carousel/03.jpg'" alt="feature item">
+      <img :src="base+'/images/carousel/01.jpg'" alt="feature item">
     </div>
     <div :class="{'dark' : dark}" class="title">
       <router-link :to="{name:'profile', params: {id: provider.id}}" class="name">{{provider.nombre_fantasia}}</router-link>
@@ -58,7 +58,7 @@ export default {
     margin-top: 3px;
   }
   p.dark,
-  span.dark {
+  a.dark {
     color: white;
   }
 }
@@ -79,7 +79,6 @@ export default {
   text-align: center;
   margin: 15px 0;
   .name{
-    color: white;
     margin-bottom: 3px;
     font-size: 20px;
   }

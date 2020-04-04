@@ -13,12 +13,8 @@
               <router-link :to="{name:'home'}"><img :src="base+'/images/logo.png'" alt="footer logo"></router-link>
             </div>
             <div class="footer-intro">
-              <p>Lorem ipsum dolor sit amet sectetuer
-                esl adipiscing elit sed diam nonummy
-                nibhi euismod tincidunt ut laoreet
-                dolore amet magna.
-              </p>
-              <p><span>Dirección: </span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae soluta molestiae illo.</p>
+              <p>EventosOK</p>
+              <p><span>Dirección: </span>Parque Comercial Avellaneda, Local E7, B1875, Avellaneda, Buenos Aires.</p>
               <p><span>Teléfono: </span>+54 911 2722 5496</p>
               
             </div>
@@ -28,7 +24,9 @@
               <h5>Nuestra ubicación</h5>
             </div>
             <div class="footer-recent-post-widget">
-              <p>Insert map here</p>
+              <div class="map-container">
+                <Map toltip="EventosOk" lat="-34.6768592" lng="-58.3347693" />
+              </div>
             </div>
           </div>
           <!-- <div class="col-md-4 col-sm-4 col-xs-12 margin-bottom-30">
@@ -79,11 +77,16 @@
   </footer>
 </template>
 <script>
+
 import { mapState } from 'vuex'
+
+import Map from '@/components/Map'
+
 export default {
+  components: {Map},
   computed: {
     ...mapState(['base'])
-  }
+  },
 }
 </script>
 
@@ -114,5 +117,8 @@ export default {
         font-weight: bold;
       }
     }
+  }
+  .map-container{
+    height: 300px;
   }
 </style>

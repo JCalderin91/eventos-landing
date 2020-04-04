@@ -43,23 +43,25 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card">
-            Mapa
+          <div class="card map-card">
+            <Map :markers="markers" lat="-34.665097411045075" lng="-58.36575223327946" />
           </div>
         </div>
       </div>
     </div>
+    <!-- <pre>{{markers}}</pre> -->
   </section>
 </template> 
 
 
 <script>
 import SearchForm from '@/components/SearchForm'
+import Map from '@/components/Map'
 import Item from '@/components/Item'
 import { mapState, mapMutations } from 'vuex';
 
 export default {
-  components: { SearchForm, Item },
+  components: { SearchForm, Item, Map },
 
   mounted(){
     console.log(this.$router)
@@ -74,7 +76,17 @@ export default {
     ...mapMutations(['clearResults','clearRequest','search'])
   },
   computed: {
-    ...mapState(['searchResults'])
+    ...mapState(['searchResults']),
+    markers(){
+      if(this.searchResults.length > 0){
+        return this.searchResults.map( r => ({
+          lat: r.provider.latitud,
+          lng: r.provider.longitud,
+          name: r.provider.nombre_fantasia
+        }) )
+      }
+      return []
+    }
   },
 }
 </script>
@@ -96,6 +108,15 @@ export default {
     justify-content: center;
     img{
       width: 500px
+    }
+  }
+  .map-card{
+    height: 100%;
+    .vue2leaflet-map{
+      max-height: 100% !important;
+      height: 100% !important;
+      max-width: 100% !important;
+      width: 100% !important;
     }
   }
 
