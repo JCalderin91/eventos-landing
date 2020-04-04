@@ -2,7 +2,7 @@
   <div class="review card mb-2">
     <div class="row">
       <div class="col-sm-3 review-content-photo">
-        <img class="review-photo" :src="base+'images/listings/370x300/05.jpg'" alt="feature item" />
+        <img class="review-photo" :src="base+'/images/listings/370x300/05.jpg'" alt="feature item" />
         <h6>Petronila Mata</h6>
       </div>
       <div class="col-sm-9 ">
@@ -22,7 +22,7 @@
         <br>
         <div class="row">
           <div v-for="i in 3" :key="i" class="col-sm-4">
-            <img :src="base+'images/listings/370x300/05.jpg'" alt="feature item" />
+            <img :src="base+'/images/listings/370x300/05.jpg'" alt="feature item" />
           </div>
         </div>
       </div>

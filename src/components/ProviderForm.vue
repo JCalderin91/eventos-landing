@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-title">
-      <h4 class="text-center">Registrarse</h4>
+      <h4 class="text-center text-color">Registrarse</h4>
       <p class="text-center">Registro de proveedores</p>
     </div>
     <hr>
@@ -40,7 +40,7 @@
       </div>
     </div>
     <hr>
-    <button class="btn btn-rounded bgyallow-1">Registrarse</button>
+    <button class="btn btn-rounded bgyallow-1 text-white">Registrarse</button>
     <p class="mt-2"><a  @click.prevent="toggleModalType('user-register')" href="#">Registrarse como cliente</a></p>
   </div>
 </template>

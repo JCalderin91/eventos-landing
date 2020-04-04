@@ -22,7 +22,8 @@
               <div v-for="service in services" :key="service.id" class="item col-md-4 col-sm-6 col-xs-12">
                 <!-- .ITEM -->
                 <div class="listing-item clearfix">
-                 <div v-if="isCombo(service)" class="tag-combo">Oferta</div>
+                 <!-- <div v-if="isCombo(service)" class="tag-combo">Oferta</div> -->
+                  <img v-if="isCombo(service)" class="tag-combo" src="images/oferta.svg" alt="feature item" />
                   <div class="figure">
                     <img src="images/listings/370x300/01.jpg" alt="feature item" />
                     <div class="item-love"><a href="#"><i class="fa fa-heart-o"></i><i class="fa fa-heart "></i></a>
@@ -48,7 +49,7 @@
                       </div>
                       <div class="listing-location pull-left">
                         <!-- location-->
-                        <a href="#"><i class="fa fa-map-marker"></i>{{service.provider.location.name}}</a>
+                        <a @click.prevent="makeSearch(service.provider.location.id)" href="#"><i class="fa fa-map-marker"></i>{{service.provider.location.name}}</a>
                       </div><!-- location end-->
                       <div class="star-rating pull-right">
                         <!-- rating-->
@@ -68,22 +69,39 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapMutations, mapState } from 'vuex'
 export default {
   data: () => ({
-    services: []
+    services: [],
   }),
   mounted(){
     this.getLastServices()
       .then( res => this.services = res )
       .catch( err => console.log(err) )
+    
   },
   methods: {
-    ...mapActions(['getLastServices']),
+    ...mapActions(['getLastServices','search']),
+    ...mapMutations(['setRequest']),
     isCombo(item){
       return item.nombre_servicio ? false : true
     },
+    makeSearch(id){
+      this.setRequest({
+        keywords: '',
+        category: 'all',
+        location: id
+      })
+
+      this.search(this.request)
+        .then(res => {
+          this.$router.push({name:'results', params: {results: res.data}})
+        })
+    },
   },
+  computed: {
+    ...mapState(['request'])
+  }
 }
 </script>
 
@@ -99,15 +117,13 @@ export default {
       }
       .tag-combo{
         position: absolute;
-        background-color: rgb(248, 29, 29);
         z-index: 2;
         transform: rotate(-45deg);
         padding: 5px 50px;
-        top: 20px;
-        left: -40px;
+        top: 2px;
+        left: -50px;
         color: white;
-        border: 3px rgb(250, 153, 153) dotted;
-        
+        height: 80px;
       }
     }
   }

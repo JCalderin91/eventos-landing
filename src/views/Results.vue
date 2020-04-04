@@ -28,7 +28,7 @@
             </div>
             <br> -->
 
-            <p>Resultados de busqueda: {{searchResults.length}} </p>
+            <div>Resultados de busqueda: {{searchResults.length}} </div>
             <!-- ************************* -->
             <transition-group name="fade" mode="out-in" class="section-items row" tag="div">
               <div class="col-md-6 mb-3" v-for="result in searchResults" :key="result.id">
@@ -37,7 +37,7 @@
             </transition-group>
 
             <div v-if="searchResults.length == 0" class="no-search">
-              <img src="images/search.png" />
+              <img src="images/search.svg" />
             </div>
 
           </div>
@@ -95,7 +95,7 @@ export default {
     display: flex;
     justify-content: center;
     img{
-      width: 300px
+      width: 500px
     }
   }
 

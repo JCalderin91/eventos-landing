@@ -26,7 +26,7 @@
             <div class="cat-wrap shadow-1">
               <div class="cat-wrap-inner">
                 <p><i :class="'yallow-1 white '+category.icono"></i></p>
-                <h5><a href="#">{{category.nombre_servicio}}</a></h5>
+                <h5><a @click.prevent="makeSearch(category.id)" href="#">{{category.nombre_servicio}}</a></h5>
               </div>
             </div>
           </div><!-- category column end -->
@@ -42,7 +42,7 @@
 
 <script>
 
-  import {mapState, mapActions} from 'vuex';
+  import {mapState, mapActions, mapMutations} from 'vuex';
 
   import { Hooper, Slide } from 'hooper';
   import 'hooper/dist/hooper.css';
@@ -77,16 +77,28 @@
         .catch( err => console.log(err) )
     },
     methods: {
-      ...mapActions(['getCategories']),
+      ...mapActions(['getCategories','search']),
+      ...mapMutations(['setRequest']),
       slidePrev() {
       this.$refs.carousel.slidePrev();
       },
       slideNext() {
         this.$refs.carousel.slideNext();
+      },
+      makeSearch(id){
+        this.setRequest({
+          keywords: '',
+          category: id,
+          location: 'all'
+        })
+        this.search(this.request)
+          .then( res =>{
+            this.$router.push({name:'results', params: {results: res.data}})
+          })
       },      
     },
     computed: {
-      ...mapState(['baseUrl'])
+      ...mapState(['baseUrl','request'])
     }
   }
 </script>

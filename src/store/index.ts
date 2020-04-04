@@ -9,7 +9,7 @@ export default new Vuex.Store({
     menuopen: false,
     Modal: false,
     ModalType: '',
-    server: 'http://eventos-back.wen:8080/',
+    server: 'http://eventos.wen:8080/',
     base: window.origin,
     searchResults: [],
     request: {
@@ -19,6 +19,9 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    setRequest(state, request){     
+      state.request = request
+    },
     toggleMenu(state, value){     
       state.menuopen = (value == false) ? false : !state.menuopen
     },
@@ -85,6 +88,24 @@ export default new Vuex.Store({
     getService(context, id){
       return new Promise((resolve, reject) => {
         axios.get(context.state.server+'api/search-services/'+id)
+        .then( res => {
+          resolve(res.data)
+        })
+        .catch( err => reject(err))
+      })
+    },
+    getCombo(context, id){
+      return new Promise((resolve, reject) => {
+        axios.get(context.state.server+'api/service-combos/'+id)
+        .then( res => {
+          resolve(res.data)
+        })
+        .catch( err => reject(err))
+      })
+    },
+    getProvider(context, id){
+      return new Promise((resolve, reject) => {
+        axios.get(context.state.server+'api/profile/'+id)
         .then( res => {
           resolve(res.data)
         })

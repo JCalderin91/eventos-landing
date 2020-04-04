@@ -16,12 +16,17 @@ const routes = [
     component: () => import('../views/Service.vue')
   },
   {
+    path: '/combo/:id',
+    name: 'combo',
+    component: () => import('../views/Service.vue')
+  },
+  {
     path: '/resultados',
     name: 'results',
     component: () => import('../views/Results.vue')
   },
   {
-    path: '/perfil',
+    path: '/perfil/:id',
     name: 'profile',
     component: () => import('../views/Profile.vue')
   },

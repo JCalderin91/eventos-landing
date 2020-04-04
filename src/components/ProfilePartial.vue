@@ -1,11 +1,11 @@
 <template> 
   <div :class="{'card': !dark}" class="user-section mb-2">
     <div class="profile-photo">
-      <img :src="base+'images/carousel/03.jpg'" alt="feature item">
+      <img :src="base+'/images/carousel/03.jpg'" alt="feature item">
     </div>
     <div :class="{'dark' : dark}" class="title">
-      <router-link to="/profile" class="name">{{provider.nombre_fantasia}}</router-link>
-      <div class="location">{{provider.location.name}}</div>
+      <router-link :to="{name:'profile', params: {id: provider.id}}" class="name">{{provider.nombre_fantasia}}</router-link>
+      <div v-if="!dark" class="location">{{provider.location.name}}</div>
     </div>
     <div class="row">
       <div class="col-xs-4 indicator">
@@ -79,6 +79,7 @@ export default {
   text-align: center;
   margin: 15px 0;
   .name{
+    color: white;
     margin-bottom: 3px;
     font-size: 20px;
   }

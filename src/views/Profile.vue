@@ -1,18 +1,18 @@
 <template>
   <div class="profile">
     <div class="header-profile">
-      <img class="header-photo" src="images/carousel/03.jpg" alt="feature item">
+      <img class="header-photo" :src="base+'/images/carousel/03.jpg'" alt="feature item">
       <div class="container">
 
         <div class="row">
-          <div class="col-md-4 ">  
-            <Profile-partial dark/>
+          <div v-if="!isLoading" class="col-md-4 ">  
+            <Profile-partial :provider="provider" dark/>
           </div>
           <div class="col-md-6"></div>
           <div class="col-sm-12 side-section">
             <div class="actions">
-              <div class="rating ml-3">8.0</div>
-              <div class="reserve">Solicitar Presupuesto</div>
+              <div class="btn btn-success mr-2">8.0 <i class="fa fa-trophy"></i></div>
+              <div class="btn btn-danger">Solicitar Presupuesto <i class="fa fa-file"></i></div>
             </div>
           </div>
         </div>
@@ -30,7 +30,7 @@
         <div class="col-md-8">
           <div class="section-items row">
             <div class="col-md-6" v-for="i in 6" :key="i">
-              <Item />
+              <!-- <Item :item="[]" /> -->
             </div>
           </div>
         </div>
@@ -40,13 +40,29 @@
 </template>
 
 <script>
-  import Item from '@/components/Item'
+  // import Item from '@/components/Item'
   import ProfilePartial from '@/components/ProfilePartial'
+  import { mapActions, mapState } from 'vuex'
   export default {
     components: {
-      Item,
+      // Item,
       ProfilePartial
     },
+    data: () => ({
+      provider: {},
+      isLoading: true
+    }),
+    mounted(){
+      this.getProvider(this.$route.params.id)
+      .then( res => this.provider = res )
+        .finally( () => this.isLoading = false )
+    },
+    methods: {
+      ...mapActions(['getProvider'])
+    },
+    computed: {
+      ...mapState(['base'])
+    }
   }
 </script>
 

@@ -5,7 +5,7 @@
         <input @input="whatchKeywords()" v-model="request.keywords" class="search-form-input" name="key-word" placeholder="Buscar palabra" type="text" />
       </div>
       <div class="select-field-wrap pull-left">
-        <select class="search-form-select" name="categories">
+        <select v-model="request.category" class="search-form-select" name="categories">
           <option class="options" value="all">Todas</option>
           <option v-for="category in categories" :key="category.id" class="options" :value="category.id">{{category.nombre_servicio}}</option>
         </select>
@@ -66,7 +66,7 @@ export default {
   computed: {
     ...mapState(['request']),
     formValid(){
-      return this.request.keywords !== '' ? true : false
+      return this.request.category !== 'all' || this.request.location !== 'all' || this.request.keywords !== '' ? true : false
     },
     title(){
       return this.request.keywords !== '' ? 'Buscar' : 'Debe ingresar una palabra a buscar'

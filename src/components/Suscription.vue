@@ -12,7 +12,7 @@
           <div class="subscribe-form">
             <form class="mailchimp">
               <input class="subs-field" type="email" name="email" placeholder="Ingrese su correo" required />
-              <input class="subs-btn bgyallow-1" type="submit" value="Suscribirme">
+              <input class="subs-btn bgyallow-1 text-white" type="submit" value="Suscribirme">
             </form>
           </div>
         </div>

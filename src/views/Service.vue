@@ -4,7 +4,7 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-6">
-            <h4 class="text-left">{{ service.nombre_servicio ? service.nombre_servicio : service.nombre_combo_servicio }} <span class="text-success">${{service.monto_servicio}}</span></h4>
+            <h4 class="text-left">{{ !isCombo ? service.nombre_servicio : service.nombre_combo_servicio }} <span class="text-success">${{service.monto_servicio}}</span></h4>
           </div>
           <div class="col-sm-6 actions">
             <div class="btn btn-success mr-2">8.0 <i class="fa fa-trophy"></i></div>
@@ -17,7 +17,7 @@
       <div class="row">
         <div class="col-md-8">
           <div class="card">
-            <p class="parraf">{{service.descripcion_servicio}}</p>
+            <p class="parraf">{{ !isCombo ? service.descripcion_servicio : service.descripcion_combo}}</p>
 
             <div class="service-categories row">
               <div v-for="i in 6" :key="i" class="col-sm-4">
@@ -39,13 +39,13 @@
             <Review v-for="i in 3" :key="i"/>
           </div>
         </div>
-        <div v-if="!isLoading" class="col-md-4">
+        <div v-if="!isLoading && !isCombo" class="col-md-4">
           <Info-partial :provider="service.provider"/>
           <Profile-partial :provider="service.provider"/>
         </div>
       </div>
     </div>
-    <pre>{{service}}</pre>
+    <!-- <pre>{{service}}</pre> -->
   </div>
 </template>
 <script>
@@ -58,16 +58,32 @@ export default {
   components: {ReviewForm, Review, ProfilePartial, InfoPartial},
   data: () => ({
     isLoading: true,
-    service: {}
+    service: {},
+    isCombo: false
   }),
   mounted(){  
-    this.getService(this.$route.params.id)
-      .then( res => this.service = res)
-      .catch( err => console.log(err) )
-      .finally( () => this.isLoading = false)
+    if(this.$route.name === 'combo'){
+      this.comboShow(this.$route.params.id)
+      this.isCombo = true
+    }else{
+      this.serviceShow(this.$route.params.id)
+    }
+
   },
   methods:{
-    ...mapActions(['getService']),
+    ...mapActions(['getService','getCombo']),
+    serviceShow(id){
+      this.getService(id)
+        .then( res => this.service = res)
+        .catch( err => console.log(err) )
+        .finally( () => this.isLoading = false)
+    },
+    comboShow(id){
+      this.getCombo(id)
+        .then( res => this.service = res)
+        .catch( err => console.log(err) )
+        .finally( () => this.isLoading = false)
+    },
   }
 }
 </script>
