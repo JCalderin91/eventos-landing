@@ -19,7 +19,7 @@
       <hr>
       <div class="row">
         <div class="col-md-6 text-uppercase">
-          <a class="location-link" href="#" @click.prevent="makeSearch(item.provider.location.id)">
+          <a class="location-link" href="#" @click.prevent="moveMap(item.provider)">
             <i class="fa fa-map-marker"></i>
             {{item.provider.location.name}}
           </a>
@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import L from 'leaflet';
 import { mapActions, mapState, mapMutations } from 'vuex'
 export default {
   props: {
@@ -42,7 +43,7 @@ export default {
   },
   methods:{
     ...mapActions(['search']),
-    ...mapMutations(['setRequest']),
+    ...mapMutations(['setRequest','setCenterMapResults']),
     makeSearch(id){
       this.setRequest({
         keywords: '',
@@ -53,7 +54,11 @@ export default {
     },
     isCombo(item){
       return item.nombre_servicio ? false : true
-    }
+    },
+    moveMap(provider){
+      console.log(provider)
+      this.setCenterMapResults(L.latLng(provider.latitud, provider.longitud))
+    },
   },
   computed: {
     ...mapState(['request'])

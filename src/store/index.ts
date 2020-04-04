@@ -18,8 +18,12 @@ export default new Vuex.Store({
       location: 'all'
     },
     isLogged: false,
+    centerMapResults: null,
   },
   mutations: {
+    setCenterMapResults(state, center){
+      state.centerMapResults = center
+    },     
     setRequest(state, request){     
       state.request = request
     },

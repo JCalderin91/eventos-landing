@@ -1,5 +1,5 @@
 <template>
-  <l-map id="map" :zoom="zoom" :center="center">
+  <l-map id="map" :zoom="zoom" :center="centerMapResults">
     <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
     <template v-if="haveMarkers">
       <l-marker  v-for="(m,i) in markersToShow" :key="i" :lat-lng="m">
@@ -25,6 +25,7 @@ import 'leaflet/dist/leaflet.css';
 import {
   Icon
 } from 'leaflet'
+import { mapMutations, mapState } from 'vuex';
 
 delete Icon.Default.prototype._getIconUrl;
 
@@ -65,10 +66,20 @@ export default {
     marker: L.latLng(0, 0),
     attribution: '',
   }),
-  mounted(){
+  created(){
     this.marker = L.latLng(this.lat, this.lng)
+    if(this.markers.length>0){
+      return L.latLng(this.lat, this.lng)
+    }else{
+      console.log('else')
+      return this.setCenterMapResults(L.latLng(this.lat, this.lng))
+    }
+  },
+  methods:{
+    ...mapMutations(['setCenterMapResults'])
   },
   computed: {
+    ...mapState(['centerMapResults']),
     markersToShow(){
       if(this.markers.length>0)
         return this.markers.map( m => L.latLng(m.lat, m.lng) )
@@ -76,14 +87,8 @@ export default {
     },
     haveMarkers(){
       return this.markers.length>0
-    },
-    center(){
-      if(!this.haveMarkers)
-        return L.latLng(this.lat, this.lng)
-      else
-        return L.latLng(this.markersToShow[0].lat, this.markersToShow[0].lng)
-    }
-  }
+    },    
+  }, 
 }
 </script>
 
