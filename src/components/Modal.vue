@@ -5,9 +5,11 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content card">
           <h4 @click="toggleModal()" class="close">&times;</h4>
-          <User-form v-if="ModalType == 'user-register' "/>
-          <Provider-form v-if="ModalType == 'provider-register' "/>
-          <Login-form v-if="ModalType == 'login-form' "/>
+          <transition name="fade" mode="out-in">
+            <User-form v-if="ModalType == 'user-register' "/>
+            <Provider-form v-if="ModalType == 'provider-register' "/>
+            <Login-form v-if="ModalType == 'login-form' "/>
+          </transition>
         </div>
       </div>
     </div>
@@ -42,7 +44,7 @@ export default {
     background-color: rgba(0,0,0,.5)
   }
   .modal{
-    overflow: scroll;
+    overflow: auto !important;
   }
   .modal-content.card{
     padding-top: 35px;

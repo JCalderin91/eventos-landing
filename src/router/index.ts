@@ -45,6 +45,15 @@ const routes = [
     name: 'legals',
     component: () => import('../views/Legals.vue')
   },
+  {
+    path: '/404',
+    name: '404',
+    component: () => import('../views/404.vue')
+  },
+  {
+    path: '*',
+    redirect: '/404'
+  }
 ]
 
 const router = new VueRouter({

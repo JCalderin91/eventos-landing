@@ -58,7 +58,7 @@ export default {
     margin-top: 3px;
   }
   p.dark,
-  a.dark {
+  span.dark {
     color: white;
   }
 }
@@ -82,7 +82,7 @@ export default {
     margin-bottom: 3px;
     font-size: 20px;
   }
-  &.dark{
+  &.dark a{
     color: white
   }
 }

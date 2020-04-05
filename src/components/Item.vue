@@ -1,8 +1,8 @@
 <template>
   <div>
-    <img v-if="isCombo(item)" class="tag-combo" src="images/oferta.svg" alt="feature item" />
+    <img v-if="isCombo(item)" class="tag-combo" :src="base+'/images/oferta.svg'" alt="feature item" />
 
-    <img src="images/listings/370x300/04.jpg" alt="feature item" />
+    <img :src="base+'/images/listings/370x300/04.jpg'" alt="feature item" />
     <div class="card">
       <h6>{{!isCombo(item) ? item.nombre_servicio :item.nombre_combo_servicio}}</h6>
       <div class="d-flex justify-content-between align-items-center mt-2">
@@ -16,9 +16,9 @@
       <div class="mask"></div>
       <router-link v-if="isCombo(item)" :to="{name:'combo', params: {id:item.id}}" class="text-center mt-2">Mas información</router-link>
       <router-link v-else :to="{name:'service', params: {id:item.id}}" class="text-center mt-2">Mas información</router-link>
-      <hr>
-      <div class="row">
-        <div class="col-md-6 text-uppercase">
+      <hr v-if="!profile" />
+      <div v-if="!profile" class="row">
+        <div  class="col-md-6 text-uppercase">
           <a class="location-link" href="#" @click.prevent="moveMap(item.provider)">
             <i class="fa fa-map-marker"></i>
             {{item.provider.location.name}}
@@ -39,6 +39,10 @@ export default {
   props: {
     item: {
       required: true,
+    },
+    profile: {
+      type: Boolean,
+      default: false
     }
   },
   methods:{
@@ -61,7 +65,7 @@ export default {
     },
   },
   computed: {
-    ...mapState(['request'])
+    ...mapState(['request', 'base'])
   }
 }
 </script>

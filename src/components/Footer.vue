@@ -5,21 +5,20 @@
     <div class="container">
       <div class="footer-main padding-bottom-10">
         <div class="row">
-          <div class="col-md-4 col-sm-4 col-xs-12 margin-bottom-30">
+          <div class="col-md-4 col-12 margin-bottom-30">
             <div class="footer-widget-title">
-              <h5>Nosotros</h5>
+              <h5 class="text-center text-md-left">Nosotros</h5>
             </div>
             <div class="footer-logo">
               <router-link :to="{name:'home'}"><img :src="base+'/images/logo.png'" alt="footer logo"></router-link>
             </div>
             <div class="footer-intro">
-              <p>EventosOK</p>
-              <p><span>Dirección: </span>Parque Comercial Avellaneda, Local E7, B1875, Avellaneda, Buenos Aires.</p>
-              <p><span>Teléfono: </span>+54 911 2722 5496</p>
-              
+              <p class="text-center text-md-left">EventosOK</p>
+              <p class="text-center text-md-left"><span>Dirección: </span>Parque Comercial Avellaneda, Local E7, B1875, Avellaneda, Buenos Aires.</p>
+              <p class="text-center text-md-left"><span>Teléfono: </span>+54 911 2722 5496</p>              
             </div>
           </div>
-          <div class="col-md-8 col-xs-12 margin-bottom-30">
+          <div class="col-md-8 col-12 margin-bottom-30">
             <div class="footer-widget-title">
               <h5>Nuestra ubicación</h5>
             </div>

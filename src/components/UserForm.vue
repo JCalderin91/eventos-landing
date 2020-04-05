@@ -1,53 +1,74 @@
 <template>
-  <div class="card">
+  <form @submit.prevent="submit()" class="card">
     <div class="card-title">
-      <h4 class="text-center text-color">Registrarse</h4>
-      <p class="text-center">Registro de clientes</p>
+      <img :src="base+'/images/logo.png'" height="60" alt="" />
+      <h5 class="text-center text">Registro de clientes</h5>
     </div>
     <hr>
     <div class="row">
       <div class="col-md-12">
         <div class="form-group">
           <label>Nombres</label>
-          <input type="text" class="form-control">
+          <input v-model="credentials.first_name" required type="text" class="form-control">
         </div>
       </div>
       <div class="col-md-12">
         <div class="form-group">
           <label>Apellidos</label>
-          <input type="text" class="form-control">
+          <input v-model="credentials.last_name" required type="text" class="form-control">
         </div>
       </div>
       <div class="col-md-12">
         <div class="form-group">
           <label>Correo electronico</label>
-          <input type="email" class="form-control" aria-describedby="emailHelp">
+          <input v-model="credentials.email" required type="email" class="form-control" aria-describedby="emailHelp">
         </div>
       </div>
       <div class="col-md-12">
         <div class="form-group">
           <label for="exampleInputPassword1">Contraseña</label>
-          <input type="password" class="form-control">
+          <input v-model="credentials.password" required type="password" class="form-control">
         </div>
       </div>
       <div class="col-md-12">
         <div class="form-group">
           <label for="exampleInputPassword1">Confirmar contraseña</label>
-          <input type="password" class="form-control">
+          <input v-model="credentials.verifyPassword" required type="password" class="form-control">
         </div>
       </div>
     </div>
     <hr>
     <button class="btn btn-rounded bgyallow-1 text-white">Registrarse</button>
     <p class="mt-2"><a @click.prevent="toggleModalType('provider-register')" href="#">Registrarse como proveedor</a></p>
-  </div>
+  </form>
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapMutations, mapState } from "vuex";
 export default {
+  data: () => ({
+    isLoading: false,
+    credentials: {}
+  }),
   methods:{
     ...mapMutations(['toggleModalType']),
+    submit(){
+      console.log(this.credentials)
+    }
   },
+  computed: {
+    ...mapState(['base']),
+  }
 }
 </script>
+
+<style lang="scss" scope>
+  .card-title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .text{
+      margin-top: 10px;
+    }
+  }
+</style>

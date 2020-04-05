@@ -4,7 +4,7 @@
       <Map :lat="provider.latitud" :lng="provider.longitud" />
       <div class="item">
         <span class="fa fa-map"></span>
-        <p>{{provider.direccion_domicilio}}</p>
+        <p>{{provider.direccion_domicilio}} - {{provider.zona}}</p>
       </div>
       <div class="item">
         <span class="fa fa-phone"></span>

@@ -68,11 +68,11 @@ export default {
   }),
   created(){
     this.marker = L.latLng(this.lat, this.lng)
+
     if(this.markers.length>0){
-      return L.latLng(this.lat, this.lng)
+      this.setCenterMapResults(L.latLng(this.markers[0].lat, this.markers[0].lng))
     }else{
-      console.log('else')
-      return this.setCenterMapResults(L.latLng(this.lat, this.lng))
+      this.setCenterMapResults(L.latLng(this.lat, this.lng))
     }
   },
   methods:{

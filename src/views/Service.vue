@@ -1,21 +1,41 @@
 <template>
   <div>
+    <hooper v-if="typeProfile != 1 && !isLoading" ref="carousel" :settings="hooperSettings">
+      <slide          
+        v-for="indx in 3"
+        :key="indx"
+        :index="indx">
+        <img class="imagen-slider" :src="`${base}/images/listings/370x300/0${indx}.jpg`" alt="feature item" />
+      </slide>
+    </hooper>
+
     <section class="top-bar bgwhite">
       <div class="container">
         <div class="row">
           <div class="col-sm-6">
             <h4 class="text-left">{{ !isCombo ? service.nombre_servicio : service.nombre_combo_servicio }} <span class="text-success">${{service.monto_servicio}}</span></h4>
+            <p>{{capacidad}}</p>
           </div>
           <div class="col-sm-6 actions">
-            <div class="btn btn-success mr-2">8.0 <i class="fa fa-trophy"></i></div>
-            <div class="btn btn-danger">Solicitar Presupuesto <i class="fa fa-file"></i></div>
+            <div class="btn btn-danger float-right">Solicitar Presupuesto <i class="fa fa-file"></i></div>
+            <div class="btn btn-success mr-2 float-right">8.0 <i class="fa fa-trophy"></i></div>
           </div>
         </div>
       </div>
     </section>
     <div class="container service-body">
       <div class="row">
-        <div class="col-md-8">
+        <div :class="{'order-2' : typeProfile == 3}" class="col-md-8"> 
+
+          <hooper v-if="typeProfile == 1" ref="carousel" :settings="hooperSettings">
+            <slide          
+              v-for="indx in 3"
+              :key="indx"
+              :index="indx">
+              <img class="imagen-slider" :src="`${base}/images/listings/370x300/0${indx}.jpg`" alt="feature item" />
+            </slide>
+          </hooper>
+
           <div class="card">
             <p class="parraf">{{ !isCombo ? service.descripcion_servicio : service.descripcion_combo}}</p>
 
@@ -39,7 +59,7 @@
             <Review v-for="i in 3" :key="i"/>
           </div>
         </div>
-        <div v-if="!isLoading && !isCombo" class="col-md-4">
+        <div :class="{'order-1' : typeProfile == 3}" class="col-md-4" v-if="!isLoading && !isCombo" >
           <Info-partial :provider="service.provider"/>
           <Profile-partial :provider="service.provider"/>
         </div>
@@ -48,18 +68,37 @@
     <!-- <pre>{{service}}</pre> -->
   </div>
 </template>
+
 <script>
 import ReviewForm from '@/components/ReviewForm'
 import Review from '@/components/Review'
 import ProfilePartial from '@/components/ProfilePartial'
 import InfoPartial from '@/components/InfoPartial'
-import {mapActions} from 'vuex'
+import { Hooper, Slide } from 'hooper';
+import 'hooper/dist/hooper.css';
+import {mapActions, mapState} from 'vuex'
 export default {
-  components: {ReviewForm, Review, ProfilePartial, InfoPartial},
+  components: {ReviewForm, Review, ProfilePartial, InfoPartial, Hooper, Slide},
   data: () => ({
     isLoading: true,
     service: {},
-    isCombo: false
+    isCombo: false,
+    typeProfile: 0,
+    hooperSettings: {
+      itemsToShow: 1,
+      infiniteScroll: true,
+      centerMode: true,
+      breakpoints: {
+        575: {
+          centerMode: false,
+          itemsToShow: 2
+        },
+        992: {
+          itemsToShow: 3,
+          pagination: 'fraction'
+        }
+      }       
+    }
   }),
   mounted(){  
     if(this.$route.name === 'combo'){
@@ -74,42 +113,40 @@ export default {
     ...mapActions(['getService','getCombo']),
     serviceShow(id){
       this.getService(id)
-        .then( res => this.service = res)
+        .then( res => {
+          this.service = res
+          this.typeProfile = res.provider.detail_provider.profile_type_id
+        })
         .catch( err => console.log(err) )
         .finally( () => this.isLoading = false)
     },
     comboShow(id){
       this.getCombo(id)
         .then( res => this.service = res)
-        .catch( err => console.log(err) )
-        .finally( () => this.isLoading = false)
+        .catch( () => {
+          this.$router.push({name:'404'})
+        })
+        .finally( () => this.isLoading = false) 
     },
+  },
+  computed: {
+    ...mapState(['base']),
+    capacidad(){
+      if(this.service.cantidad_persona > 0)
+        return `Capacidad de ${this.service.cantidad_persona} ${ this.service.cantidad_persona>1 ? 'personas' : 'persona'}`      
+      return ''
+    }
   }
 }
 </script>
 
 <style lang="scss" scope>
+.imagen-slider{
+  width: 100%;
+}
   .top-bar {
     padding: 20px 0;
-  }
-
-  .actions {
-    display: flex;
-    justify-content: flex-end;
-
-    div {
-      padding: 10px;
-      border-radius: 3px;
-      color: white;
-    }
-    .rating {
-      background-color: #16e53e;
-      margin-right: 10px;
-    }
-    .reserve {
-      background-color: #ff3030;
-    }
-  }
+  } 
 
   .service-body {
     margin-top: 20px;

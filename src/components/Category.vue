@@ -15,7 +15,7 @@
       </div><!-- section title end -->
 
 
-      <hooper  ref="carousel" :settings="hooperSettings">
+      <hooper ref="carousel" :settings="hooperSettings">
         <slide          
           class="category-section-wrap cat-style-3"
           v-for="(category, indx) in categories"
@@ -30,9 +30,7 @@
               </div>
             </div>
           </div><!-- category column end -->
-
         </slide>
-
       </hooper>
 
     </div>

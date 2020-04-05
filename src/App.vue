@@ -16,7 +16,7 @@
     <Suscription/>
     <Footer/>
     <Modal/>
-  
+    <notifications group="foo" position="bottom right" />
   </div>
 </template>
 

@@ -829,7 +829,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#262626', endCo
 	cursor:pointer;
 	padding:13px 35px 16px 0px;
 	margin:10px 0 0 15px;
-	z-index:10000;
+	z-index:1050;
 	}
 	
 .animated-arrow span, .animated-arrow span:before, .animated-arrow span:after {

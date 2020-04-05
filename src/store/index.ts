@@ -4,12 +4,14 @@ import axios from 'axios'
 
 Vue.use(Vuex)
 
+axios.defaults.baseURL = 'http://eventos.wen:8080/';
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
 export default new Vuex.Store({
   state: {
     menuopen: false,
     Modal: false,
     ModalType: '',
-    server: 'http://eventos.wen:8080/',
     base: window.origin,
     searchResults: [],
     request: {
@@ -55,7 +57,7 @@ export default new Vuex.Store({
   actions: {
     search(context, payload){
       return new Promise((resolve, reject) => {
-        axios.get(context.state.server+'api/search-services', {params: payload})
+        axios.get('api/search-services', {params: payload})
         .then( res => {
           context.commit('search', res.data)
           resolve(res)
@@ -65,7 +67,7 @@ export default new Vuex.Store({
     },
     getCategories(context){
       return new Promise((resolve, reject) => {
-        axios.get(context.state.server+'api/categories')
+        axios.get('api/categories')
         .then( res => {
           resolve(res.data)
         })
@@ -74,7 +76,7 @@ export default new Vuex.Store({
     },
     getLocations(context){
       return new Promise((resolve, reject) => {
-        axios.get(context.state.server+'api/locations')
+        axios.get('api/locations')
         .then( res => {
           resolve(res.data)
         })
@@ -83,7 +85,7 @@ export default new Vuex.Store({
     },
     getLastServices(context){
       return new Promise((resolve, reject) => {
-        axios.get(context.state.server+'api/latest-services')
+        axios.get('api/latest-services')
         .then( res => {
           resolve(res.data)
         })
@@ -92,7 +94,7 @@ export default new Vuex.Store({
     },
     getService(context, id){
       return new Promise((resolve, reject) => {
-        axios.get(context.state.server+'api/search-services/'+id)
+        axios.get('api/search-services/'+id)
         .then( res => {
           resolve(res.data)
         })
@@ -101,7 +103,7 @@ export default new Vuex.Store({
     },
     getCombo(context, id){
       return new Promise((resolve, reject) => {
-        axios.get(context.state.server+'api/service-combos/'+id)
+        axios.get('api/service-combos/'+id)
         .then( res => {
           resolve(res.data)
         })
@@ -110,11 +112,29 @@ export default new Vuex.Store({
     },
     getProvider(context, id){
       return new Promise((resolve, reject) => {
-        axios.get(context.state.server+'api/profile/'+id)
+        axios.get('api/profile/'+id)
         .then( res => {
           resolve(res.data)
         })
         .catch( err => reject(err))
+      })
+    },
+    login(context, payload){
+      return new Promise((resolve, reject) => {
+        axios.post('api/profile/', payload)
+        .then( res => {
+          resolve(res.data)
+        })
+        .catch( err => reject(err))
+      })
+    },
+    registerProvider(context, payload){
+      return new Promise((resolve, reject) => {
+        axios.post('api/users/', payload)
+        .then( res => {
+          resolve(res.data)
+        })
+        .catch( err => reject(err.response))
       })
     },
   },

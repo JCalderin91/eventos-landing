@@ -3,7 +3,6 @@
     <div class="header-profile">
       <img class="header-photo" :src="base+'/images/carousel/04.jpg'" alt="feature item">
       <div class="container">
-
         <div class="row">
           <div v-if="!isLoading" class="col-md-4 ">  
             <Profile-partial :provider="provider" dark/>
@@ -16,21 +15,17 @@
             </div>
           </div>
         </div>
-
- 
       </div>
     </div>
-
-
     <div class="body-profile container">
       <div class="row">
-        <div class="col-md-4">
-          Mapa
+        <div v-if="!isLoading" class="col-md-4">
+          <Info-partial :provider="provider" />
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8 card">
           <div class="section-items row">
-            <div class="col-md-6" v-for="i in 6" :key="i">
-              <!-- <Item :item="[]" /> -->
+            <div class="col-md-6" v-for="service in provider.service_client" :key="service.id">
+              <Item profile :item="service" />
             </div>
           </div>
         </div>
@@ -40,13 +35,15 @@
 </template>
 
 <script>
-  // import Item from '@/components/Item'
+  import Item from '@/components/Item'
+  import InfoPartial from '@/components/InfoPartial'
   import ProfilePartial from '@/components/ProfilePartial'
   import { mapActions, mapState } from 'vuex'
   export default {
     components: {
-      // Item,
-      ProfilePartial
+      Item,
+      ProfilePartial,
+      InfoPartial
     },
     data: () => ({
       provider: {},
@@ -73,10 +70,7 @@
     padding: 25px 0;
     @media only screen and (max-width: 992px){
       margin-top: 15px;
-    }
-
-    
-
+    }  
     .side-section { 
       display: flex;
       align-items: flex-end;
@@ -88,28 +82,19 @@
         }
       }
     }
-
     .header-photo {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-    }
-
-    
-
-    
-
-    
+    }    
   }
-
   .body-profile {
     margin-top: 30px;
-
     .section-items {
       max-height: 800px;
-      overflow-y: scroll;
+      overflow-y: auto;
     }
   }
 </style>
