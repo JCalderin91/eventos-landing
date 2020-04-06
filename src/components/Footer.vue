@@ -7,13 +7,13 @@
         <div class="row">
           <div class="col-md-4 col-12 margin-bottom-30">
             <div class="footer-widget-title">
-              <h5 class="text-center text-md-left">Nosotros</h5>
+              <h5>Nosotros</h5>
             </div>
-            <div class="footer-logo">
+            <div class="footer-logo d-flex justify-content-center justify-content-md-start">
               <router-link :to="{name:'home'}"><img :src="base+'/images/logo.png'" alt="footer logo"></router-link>
             </div>
-            <div class="footer-intro">
-              <p class="text-center text-md-left">EventosOK</p>
+            <div class="footer-intro px-5 px-md-0">
+              <p class="text-center text-md-left mb-md-4">EventosOK</p>
               <p class="text-center text-md-left"><span>Dirección: </span>Parque Comercial Avellaneda, Local E7, B1875, Avellaneda, Buenos Aires.</p>
               <p class="text-center text-md-left"><span>Teléfono: </span>+54 911 2722 5496</p>              
             </div>
@@ -55,7 +55,7 @@
             </div>
           </div>
           <div class="col-md-6 col-12 social-links d-flex justify-content-center justify-content-md-end">
-            <ul>
+            <ul class="social-icons">
               <li class="item">
                 <a class="" href="http://www.linkedin.com/company/EventosOKcom"><i class="fa fa-linkedin-square"></i></a>
               </li><!-- .ITEM -->
@@ -98,7 +98,10 @@ export default {
     ul {
       li {
         display: inline-block;
-        margin: 0 5px;
+        margin: 0 10px;
+        a{
+          font-size: 18px;
+        }
         a:not(.nohover):hover i {
           color: black;
         }
@@ -111,6 +114,7 @@ export default {
 
   .footer-intro {
     p {
+      max-width: 100% !important;
       span {
         color: white;
         font-weight: bold;

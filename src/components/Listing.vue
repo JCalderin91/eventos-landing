@@ -13,11 +13,17 @@
           <div class="line"></div>
         </div>
         <p class="text-center">We help new customers & search engines to find your business online</p>
+        
       </div><!-- section title end -->
       <div class="add-listing-wrapper">
         <div class="listing-main gridview tab-content">
           <div id="latest-listing" class="tab-pane active">
-            <div class="listing-wrapper row">
+            
+            <div v-if="isLoading" class="progress">
+              <div class="progress-bar progress-bar-striped progress-bar-animated bg-color" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+            </div>
+
+            <div v-else class="listing-wrapper row">
 
               <div v-for="service in services" :key="service.id" class="item col-md-4 col-sm-6 col-xs-12">
                 <!-- .ITEM -->
@@ -73,11 +79,13 @@ import { mapActions, mapMutations, mapState } from 'vuex'
 export default {
   data: () => ({
     services: [],
+    isLoading: true,
   }),
   mounted(){
     this.getLastServices()
       .then( res => this.services = res )
       .catch( err => console.log(err) )
+      .finally( () => this.isLoading = false)
     
   },
   methods: {
@@ -109,6 +117,9 @@ export default {
   .listing-wrapper{
     .listing-item{
       overflow: hidden;
+      .figure{
+        width: 100%;
+      }
       .listing-meta-cat{
         display: flex;
         a{

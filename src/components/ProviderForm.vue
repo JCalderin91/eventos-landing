@@ -1,5 +1,5 @@
 <template>
-  <form :disabled="isLoading" @submit.prevent="submit()" class="card">
+  <form @submit.prevent="submit()" class="card">
     <div class="card-title">
       <img :src="base+'/images/logo.png'" height="60" alt="" />
       <h5 class="text-center text">Registro de proveedores</h5>
@@ -21,8 +21,8 @@
       <div class="col-12">
         <div class="form-group">
           <label>Correo electronico</label>
-          <input v-model="credentials.email" required type="email" class="form-control" aria-describedby="emailHelp">
-          <span v-if="errors.email" class="text-danger">{{errors.email[0]}}</span>
+          <input :class="{'is-invalid': errors.email}" v-model="credentials.email" required type="email" class="form-control" aria-describedby="emailHelp">
+          <div v-if="errors.email" class="invalid-feedback">{{errors.email[0]}}</div>
         </div>
       </div>
       <div class="col-md-12">
@@ -33,16 +33,20 @@
       </div>
       <div class="col-md-12">
         <div class="form-group">
-          <label for="exampleInputPassword1">Servicio</label>
+          <label for="exampleInputPassword1">Categoria principal</label>
           <select v-model="credentials.servicio" required class="form-control">
-            <option value="1">Opcion 1</option>
-            <option value="2">Opcion 2</option>
+            <option 
+              v-for="category in categories" 
+              :key="category.id" 
+              :value="category.id">
+              {{category.nombre_servicio}}
+            </option>
           </select>
         </div>
       </div>
     </div>
     <hr>
-    <button class="btn btn-rounded bgyallow-1 text-white">
+    <button :disabled="isLoading" class="btn btn-rounded bgyallow-1 text-white">
       <span v-if="!isLoading">Registrarse</span>
       <i v-else class="fa fa-spinner spinner"></i>
     </button>
@@ -56,12 +60,18 @@ export default {
   data: () => ({
     isLoading: false,
     credentials: {},
-    errors: {}
+    errors: {},
+    categories: []
   }),
+  mounted(){
+    this.getCategories()
+        .then( res => this.categories = res )
+        .catch( err => console.log(err) )
+  },
   
   methods:{
     ...mapMutations(['toggleModalType','toggleModal']),
-    ...mapActions(['registerProvider']),
+    ...mapActions(['registerProvider','getCategories']),
     submit(){
       this.isLoading = true
       this.errors = {}

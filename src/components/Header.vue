@@ -65,6 +65,9 @@
       color: white
     }
   }
+  .mobile-sub li a{
+    cursor: pointer;
+  }
   .wsmenu .logo{
     .logo-content{
       display: flex;

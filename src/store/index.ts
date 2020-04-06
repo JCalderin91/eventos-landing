@@ -9,6 +9,8 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 
 export default new Vuex.Store({
   state: {
+    accessToken: localStorage.getItem('accessToken') || null,
+    user: {}, 
     menuopen: false,
     Modal: false,
     ModalType: '',
@@ -23,12 +25,6 @@ export default new Vuex.Store({
     centerMapResults: null,
   },
   mutations: {
-    setCenterMapResults(state, center){
-      state.centerMapResults = center
-    },     
-    setRequest(state, request){     
-      state.request = request
-    },
     toggleMenu(state, value){     
       state.menuopen = (value == false) ? false : !state.menuopen
     },
@@ -37,15 +33,6 @@ export default new Vuex.Store({
       state.ModalType = type      
       state.Modal = !state.Modal
     },
-    toggleModalType(state, type){
-      state.ModalType = type
-    },
-    search(state, res){
-      state.searchResults = res
-    },
-    clearResults(state){
-      state.searchResults = []
-    },
     clearRequest(state){
       state.request = {
         keywords: '',
@@ -53,6 +40,12 @@ export default new Vuex.Store({
         location: 'all'
       }
     },
+    toggleModalType: (state, type) => state.ModalType = type,
+    setCenterMapResults: (state, center) => state.centerMapResults = center,  
+    setRequest: (state, request) => state.request = request,
+    search: (state, res) => state.searchResults = res,
+    clearResults: (state) => state.searchResults = [],
+    setToken: (state, accessToken) => state.accessToken = accessToken, 
   },
   actions: {
     search(context, payload){
@@ -121,9 +114,10 @@ export default new Vuex.Store({
     },
     login(context, payload){
       return new Promise((resolve, reject) => {
-        axios.post('api/profile/', payload)
-        .then( res => {
-          resolve(res.data)
+        axios.post('api/auth/login/', payload)
+        .then( ({data}) => {
+          context.dispatch('setToken',data.access_token)
+          resolve(data)
         })
         .catch( err => reject(err))
       })
@@ -138,6 +132,7 @@ export default new Vuex.Store({
       })
     },
   },
-  modules: {
+  getters: {
+    loggedIn: state => state.accessToken !== null,
   }
 })

@@ -7,7 +7,7 @@
     </div>
     <div class="container section-body">
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8 mb-3">
           <div class="card bgwhite">
             <!-- <p>Filtros</p>
             <div class="row">
@@ -64,7 +64,6 @@ export default {
   components: { SearchForm, Item, Map },
 
   mounted(){
-    console.log(this.$router)
     if(this.$route.params.results){
       this.search(this.$route.params.results)
     }else{
@@ -94,6 +93,7 @@ export default {
 <style lang="scss" scope>
   .section-form{
     background-color: white;
+    box-shadow: 0px -2px 20px 1px #54545440;
   }
   .section-body{
     margin-top: 30px;
@@ -117,6 +117,8 @@ export default {
       height: 100% !important;
       max-width: 100% !important;
       width: 100% !important;
+      min-height: 350px;
+      z-index: 1;
     }
   }
 

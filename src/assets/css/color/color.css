@@ -569,3 +569,6 @@ body{background:#F9F9F9;}
 .listing-search-select option{
 	background-color:#fff;
 }
+.bg-color{
+	background-color: var(--color);
+}

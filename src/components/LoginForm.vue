@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="login()" class="card">
+  <form @submit.prevent="submit()" class="card">
     <div class="card-title">
       <img :src="base+'/images/logo.png'" height="60" alt="" />
       <h5 class="text-center text">Iniciar sessión</h5>
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
   data: () => ({
     credentials: {
@@ -34,8 +34,8 @@ export default {
     isLoading: false,
   }),
   methods: {
-    ...mapMutations(['login']),
-    login(){
+    ...mapActions(['login']),
+    submit(){
       this.isLoading = true
       this.login(this.credentials)
         .then(res => console.log(res))

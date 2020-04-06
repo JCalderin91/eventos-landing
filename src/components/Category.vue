@@ -13,9 +13,12 @@
           <div @click.prevent="slideNext" class="owl-next"><i class="fa fa-angle-right"></i></div>
         </div>
       </div><!-- section title end -->
+      
+      <div v-if="isLoading" class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-color" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+      </div>
 
-
-      <hooper ref="carousel" :settings="hooperSettings">
+      <hooper v-else ref="carousel" :settings="hooperSettings">
         <slide          
           class="category-section-wrap cat-style-3"
           v-for="(category, indx) in categories"
@@ -53,6 +56,7 @@
     data(){
       return {
         categories: [],
+        isLoading: true,
         hooperSettings: {
           itemsToShow: 1,
           infiniteScroll: true,
@@ -73,6 +77,7 @@
       this.getCategories()
         .then( res => this.categories = res )
         .catch( err => console.log(err) )
+        .finally( () => this.isLoading = false)
     },
     methods: {
       ...mapActions(['getCategories','search']),

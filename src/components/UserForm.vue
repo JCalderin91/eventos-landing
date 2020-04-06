@@ -27,13 +27,14 @@
       <div class="col-md-12">
         <div class="form-group">
           <label for="exampleInputPassword1">Contraseña</label>
-          <input v-model="credentials.password" required type="password" class="form-control">
+          <input :class="{'is-invalid': !passwordMach}" v-model="credentials.password" required type="password" class="form-control">
         </div>
       </div>
       <div class="col-md-12">
         <div class="form-group">
           <label for="exampleInputPassword1">Confirmar contraseña</label>
-          <input v-model="credentials.verifyPassword" required type="password" class="form-control">
+          <input :class="{'is-invalid': !passwordMach}" v-model="credentials.verifyPassword" required type="password" class="form-control">
+          <div class="invalid-feedback">Las contraseñas no coinciden</div>
         </div>
       </div>
     </div>
@@ -48,7 +49,10 @@ import { mapMutations, mapState } from "vuex";
 export default {
   data: () => ({
     isLoading: false,
-    credentials: {}
+    credentials: {
+      password: '',
+      verifyPassword: ''
+    }
   }),
   methods:{
     ...mapMutations(['toggleModalType']),
@@ -58,7 +62,13 @@ export default {
   },
   computed: {
     ...mapState(['base']),
-  }
+    passwordMach(){
+      if(this.credentials.password.length > 0 && this.credentials.verifyPassword.length > 0){
+        return this.credentials.password !== this.credentials.verifyPassword ? false : true
+      }
+      return true
+    }
+  },
 }
 </script>
 

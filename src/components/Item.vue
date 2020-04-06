@@ -2,7 +2,7 @@
   <div>
     <img v-if="isCombo(item)" class="tag-combo" :src="base+'/images/oferta.svg'" alt="feature item" />
 
-    <img :src="base+'/images/listings/370x300/04.jpg'" alt="feature item" />
+    <img class="item-img" :src="base+'/images/listings/370x300/04.jpg'" alt="feature item" />
     <div class="card">
       <h6>{{!isCombo(item) ? item.nombre_servicio :item.nombre_combo_servicio}}</h6>
       <div class="d-flex justify-content-between align-items-center mt-2">
@@ -18,13 +18,13 @@
       <router-link v-else :to="{name:'service', params: {id:item.id}}" class="text-center mt-2">Mas información</router-link>
       <hr v-if="!profile" />
       <div v-if="!profile" class="row">
-        <div  class="col-md-6 text-uppercase">
-          <a class="location-link" href="#" @click.prevent="moveMap(item.provider)">
+        <div  class="col-6 text-uppercase">
+          <a class="location-link d-inline" href="#" @click.prevent="moveMap(item.provider)">
             <i class="fa fa-map-marker"></i>
             {{item.provider.location.name}}
           </a>
         </div>
-        <div class="col-md-6 text-uppercase">
+        <div class="col-6 text-uppercase">
           <p class="text-success text-right">Abierto</p>
         </div>
       </div>
@@ -60,7 +60,6 @@ export default {
       return item.nombre_servicio ? false : true
     },
     moveMap(provider){
-      console.log(provider)
       this.setCenterMapResults(L.latLng(provider.latitud, provider.longitud))
     },
   },
@@ -71,6 +70,9 @@ export default {
 </script>
 
 <style lang="scss" scope>
+.item-img{
+  width: 100%;
+}
   .rating {
     display: inline-block;
     background-color: #16e53e;
