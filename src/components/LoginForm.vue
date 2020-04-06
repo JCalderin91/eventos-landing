@@ -19,6 +19,7 @@
       <span v-if="!isLoading">Ingresar</span>
       <i v-else class="fa fa-spinner spinner"></i>
     </button>
+    <p class="mt-2"><a href="http://eventos.wen:8080/auth/login" target="_blank">¿Eres un proveedor?</a></p>
     <p class="mt-2"><a href="#">¿Olvidó su contraseña?</a></p>
   </form>
 </template>

@@ -47,9 +47,9 @@
               <li @click="toggleMenu(false)"><router-link tag="a" :to="{name:'about-us'}" class="">Quienes somos</router-link></li>
               <li @click="toggleMenu(false)"><router-link tag="a" :to="{name: 'legals'}" class="">condiciones legales</router-link></li>
               <li @click="toggleMenu(false)"><router-link tag="a" :to="{name: 'politics'}">politicas</router-link></li>
-              <li v-if="!isLogged"><a @click.prevent="toggleModal('user-register')">registrase</a></li>
-              <li v-if="!isLogged"><a @click.prevent="toggleModal('login-form')" class="toolbar-new-listing"> Acceder</a></li>
-              <li v-else><a class="toolbar-new-listing"> Cerrar sesión</a></li>
+              <li v-if="!loggedIn"><a @click.prevent="toggleModal('user-register')">registrase</a></li>
+              <li v-if="!loggedIn"><a @click.prevent="toggleModal('login-form')" class="toolbar-new-listing"> Acceder</a></li>
+              <li v-else><a @click.prevent="logout()" class="toolbar-new-listing"> Cerrar sesión</a></li>
             </ul>
           </nav>
         </div>
@@ -84,13 +84,15 @@
 </style>
 
 <script>
-import {mapMutations, mapState} from 'vuex';
+import {mapMutations, mapState, mapGetters, mapActions} from 'vuex';
 export default {
   methods:{
-    ...mapMutations(['toggleModal','toggleMenu'])
+    ...mapMutations(['toggleModal','toggleMenu']),
+    ...mapActions(['logout'])
   },
   computed: {
-    ...mapState(['base','menuopen','isLogged'])
+    ...mapState(['base','menuopen']),
+    ...mapGetters(['loggedIn'])
   }
 }
 </script>

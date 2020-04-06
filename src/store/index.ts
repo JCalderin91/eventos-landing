@@ -6,6 +6,7 @@ Vue.use(Vuex)
 
 axios.defaults.baseURL = 'http://eventos.wen:8080/';
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 export default new Vuex.Store({
   state: {
@@ -114,14 +115,29 @@ export default new Vuex.Store({
     },
     login(context, payload){
       return new Promise((resolve, reject) => {
-        axios.post('api/auth/login/', payload)
+        axios.post('/auth/login/', payload)
         .then( ({data}) => {
-          context.dispatch('setToken',data.access_token)
+          localStorage.setItem('accessToken', data.access_token)
+          document.cookie = "laravel_session="+data.access_token+"; domain=eventos.wen";
+          document.cookie = "XSRF-TOKEN="+data.access_token+"; domain=eventos.wen";
+          context.commit('setToken',data.access_token)
           resolve(data)
         })
         .catch( err => reject(err))
       })
     },
+    logout(context){
+      axios.defaults.headers.common['Authorization'] = 'bearer '+context.state.accessToken;
+      return new Promise((resolve, reject) => {
+        axios.post('auth/logout/')
+        .then( ({data}) => {
+          localStorage.removeItem('access_token')
+          resolve(data)
+        })
+        .catch( err => reject(err))
+      })
+    },
+    
     registerProvider(context, payload){
       return new Promise((resolve, reject) => {
         axios.post('api/users/', payload)
