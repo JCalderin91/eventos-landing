@@ -1,15 +1,18 @@
 <template>
-  <l-map id="map" :zoom="zoom" :center="centerMapResults">
-    <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-    <template v-if="haveMarkers">
-      <l-marker  v-for="(m,i) in markersToShow" :key="i" :lat-lng="m">
-        <l-tooltip :content="markers[i].name"></l-tooltip>
+
+    <l-map  id="map" :zoom="zoom" :center="haveMarkers ? centerMapResults : center">
+      <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+      <template v-if="haveMarkers">
+        <l-marker  v-for="(m,i) in markersToShow" :key="i" :lat-lng="m">
+          <l-tooltip :content="markers[i].name"></l-tooltip>
+        </l-marker>
+      </template>
+      <l-marker v-else :lat-lng="marker">
+        <l-tooltip :content="toltip"></l-tooltip>
       </l-marker>
-    </template>
-    <l-marker v-else :lat-lng="marker">
-      <l-tooltip :content="toltip"></l-tooltip>
-    </l-marker>
-  </l-map>
+    </l-map>
+
+
 </template>
 
 
@@ -64,7 +67,8 @@ export default {
     zoom: 12,
     url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
     marker: L.latLng(0, 0),
-    attribution: '',
+    attribution: '',   
+    center:  L.latLng(0,0),
   }),
   created(){
     this.marker = L.latLng(this.lat, this.lng)
@@ -72,7 +76,7 @@ export default {
     if(this.markers.length>0){
       this.setCenterMapResults(L.latLng(this.markers[0].lat, this.markers[0].lng))
     }else{
-      this.setCenterMapResults(L.latLng(this.lat, this.lng))
+      this.center = L.latLng(this.lat, this.lng)
     }
   },
   methods:{
@@ -87,7 +91,7 @@ export default {
     },
     haveMarkers(){
       return this.markers.length>0
-    },    
+    },        
   }, 
 }
 </script>

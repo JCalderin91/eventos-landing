@@ -49,7 +49,11 @@
               <li @click="toggleMenu(false)"><router-link tag="a" :to="{name: 'politics'}">politicas</router-link></li>
               <li v-if="!loggedIn"><a @click.prevent="toggleModal('user-register')">registrase</a></li>
               <li v-if="!loggedIn"><a @click.prevent="toggleModal('login-form')" class="toolbar-new-listing"> Acceder</a></li>
-              <li v-else><a @click.prevent="exit()" class="toolbar-new-listing"> Cerrar sesión</a></li>
+              <li v-else><a href="#" class="text-white">{{user.nombre}} <div class="i fa fa-user ml-1"></div></a>
+                <ul class="wsmenu-submenu">
+                  <li ><a @click.prevent="exit()"> Cerrar sesión</a></li>
+                </ul>
+              </li>              
             </ul>
           </nav>
         </div>
@@ -67,6 +71,9 @@
   }
   .mobile-sub li a{
     cursor: pointer;
+    &.toolbar-new-listing:hover{
+      color: white !important;
+    }
   }
   .wsmenu .logo{
     .logo-content{
@@ -81,14 +88,20 @@
       height: 55px;
     }
   }
+  .text-white{
+    color:white !important;
+  }
 </style>
 
 <script>
 import {mapMutations, mapState, mapGetters, mapActions} from 'vuex';
 export default {
+  mounted(){
+    this.me()
+  },
   methods:{
     ...mapMutations(['toggleModal','toggleMenu']),
-    ...mapActions(['logout']),
+    ...mapActions(['logout','me']),
     exit(){
       this.logout()
         .then( res => {
@@ -99,7 +112,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['base','menuopen']),
+    ...mapState(['base','menuopen','user']),
     ...mapGetters(['loggedIn'])
   }
 }

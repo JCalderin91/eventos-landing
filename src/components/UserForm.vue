@@ -9,13 +9,13 @@
       <div class="col-md-12">
         <div class="form-group">
           <label>Nombres</label>
-          <input v-model="credentials.first_name" required type="text" class="form-control">
+          <input v-model="credentials.nombre" required type="text" class="form-control">
         </div>
       </div>
       <div class="col-md-12">
         <div class="form-group">
           <label>Apellidos</label>
-          <input v-model="credentials.last_name" required type="text" class="form-control">
+          <input v-model="credentials.apellido" required type="text" class="form-control">
         </div>
       </div>
       <div class="col-md-12">
@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from "vuex";
+import { mapMutations, mapState, mapActions } from "vuex";
 export default {
   data: () => ({
     isLoading: false,
@@ -55,9 +55,24 @@ export default {
     }
   }),
   methods:{
-    ...mapMutations(['toggleModalType']),
+    ...mapMutations(['toggleModalType','toggleModal']),
+    ...mapActions(['registerClient']),
     submit(){
-      console.log(this.credentials)
+      this.registerClient(this.credentials)
+        .then( res => {
+          this.credentials = {
+            password: '',
+            verifyPassword: ''
+          }
+          this.toggleModal()
+          this.$notify({
+            group: 'foo',
+            type: 'success',
+            title: 'Exito',
+            text: 'Ha ingresado al sistema',
+          });
+        })
+        
     }
   },
   computed: {

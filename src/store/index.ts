@@ -47,7 +47,9 @@ export default new Vuex.Store({
     search: (state, res) => state.searchResults = res,
     clearResults: (state) => state.searchResults = [],
     setToken: (state, accessToken) => state.accessToken = accessToken, 
+    setUser: (state, user) => state.user = user, 
     destroyToken: (state) => state.accessToken = null, 
+    destroyUser: (state) => state.user = null, 
   },
   actions: {
     search(context, payload){
@@ -88,7 +90,9 @@ export default new Vuex.Store({
       })
     },
     getService(context, id){
-      axios.defaults.headers.common['Authorization'] = 'bearer '+context.state.accessToken;
+      if(context.state.accessToken !== null)
+        axios.defaults.headers.common['Authorization'] = 'bearer '+context.state.accessToken;
+
       return new Promise((resolve, reject) => {
         axios.get('api/search-services/'+id)
         .then( res => {          
@@ -100,7 +104,9 @@ export default new Vuex.Store({
       })
     },
     getCombo(context, id){
-       axios.defaults.headers.common['Authorization'] = 'bearer '+context.state.accessToken;
+      if(context.state.accessToken !== null)
+        axios.defaults.headers.common['Authorization'] = 'bearer '+context.state.accessToken;
+
       return new Promise((resolve, reject) => {
         axios.get('api/service-combos/'+id)
         .then( res => {
@@ -124,18 +130,35 @@ export default new Vuex.Store({
         .then( ({data}) => {
           localStorage.setItem('accessToken', data.access_token)
           context.commit('setToken',data.access_token)
+          context.commit('setUser',data.user)
           resolve(data)
         })
         .catch( err => reject(err))
       })
     },
+
     logout(context){
       axios.defaults.headers.common['Authorization'] = 'bearer '+context.state.accessToken;
       return new Promise((resolve, reject) => {
         axios.post('api/auth/logout/')
         .then( ({data}) => {
           localStorage.removeItem('accessToken')
+          resolve(data)
+        })
+        .catch( err => reject(err))
+        .finally( () => {
           context.commit('destroyToken')
+          context.commit('destroyUser')
+        } )
+      })
+    },
+
+    me(context){
+      axios.defaults.headers.common['Authorization'] = 'bearer '+context.state.accessToken;
+      return new Promise((resolve, reject) => {
+        axios.post('api/auth/me/')
+        .then( ({data}) => {
+          context.commit('setUser',data)
           resolve(data)
         })
         .catch( err => reject(err))
@@ -147,6 +170,18 @@ export default new Vuex.Store({
         axios.post('api/users/', payload)
         .then( res => {
           resolve(res.data)
+        })
+        .catch( err => reject(err.response))
+      })
+    },
+    registerClient(context, payload){
+      return new Promise((resolve, reject) => {
+        axios.post('api/auth/register-client/', {...payload, 'password_confirmation': payload.verifyPassword})
+        .then( ({data}) => {
+          localStorage.setItem('accessToken', data.access_token)
+          context.commit('setToken',data.access_token)
+          context.commit('setUser',data.user)
+          resolve(data)
         })
         .catch( err => reject(err.response))
       })

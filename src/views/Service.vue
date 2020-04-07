@@ -112,23 +112,27 @@ export default {
         .then( res => {
           this.service = res
           this.typeProfile = res.provider.detail_provider.profile_type_id
+          this.isLoading = false
         })
         .catch( err => {
           if(err.response.status === 401){
             this.$router.push({name:'unauthorized'})
           }
+          this.isLoading = false
         })
-        .finally( () => this.isLoading = false)
     },
     comboShow(id){
       this.getCombo(id)
-        .then( res => this.service = res)
+        .then( res => {
+          this.service = res
+          this.isLoading = false
+        })
         .catch( err => {
           if(err.response.status === 401){
             this.$router.push({name:'unauthorized'})
           }
+          this.isLoading = false
         })
-        .finally( () => this.isLoading = false) 
     },
   },
   computed: {
