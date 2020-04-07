@@ -51,6 +51,11 @@ const routes = [
     component: () => import('../views/404.vue')
   },
   {
+    path: '/unauthorized',
+    name: 'unauthorized',
+    component: () => import('../views/Unauthorized.vue')
+  },
+  {
     path: '*',
     redirect: '/404'
   }

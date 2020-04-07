@@ -47,6 +47,7 @@ export default new Vuex.Store({
     search: (state, res) => state.searchResults = res,
     clearResults: (state) => state.searchResults = [],
     setToken: (state, accessToken) => state.accessToken = accessToken, 
+    destroyToken: (state) => state.accessToken = null, 
   },
   actions: {
     search(context, payload){
@@ -87,15 +88,19 @@ export default new Vuex.Store({
       })
     },
     getService(context, id){
+      axios.defaults.headers.common['Authorization'] = 'bearer '+context.state.accessToken;
       return new Promise((resolve, reject) => {
         axios.get('api/search-services/'+id)
-        .then( res => {
+        .then( res => {          
           resolve(res.data)
         })
-        .catch( err => reject(err))
+        .catch( err => {       
+          reject(err)
+        })
       })
     },
     getCombo(context, id){
+       axios.defaults.headers.common['Authorization'] = 'bearer '+context.state.accessToken;
       return new Promise((resolve, reject) => {
         axios.get('api/service-combos/'+id)
         .then( res => {
@@ -115,11 +120,9 @@ export default new Vuex.Store({
     },
     login(context, payload){
       return new Promise((resolve, reject) => {
-        axios.post('/auth/login/', payload)
+        axios.post('api/auth/login-front/', payload)
         .then( ({data}) => {
           localStorage.setItem('accessToken', data.access_token)
-          document.cookie = "laravel_session="+data.access_token+"; domain=eventos.wen";
-          document.cookie = "XSRF-TOKEN="+data.access_token+"; domain=eventos.wen";
           context.commit('setToken',data.access_token)
           resolve(data)
         })
@@ -129,9 +132,10 @@ export default new Vuex.Store({
     logout(context){
       axios.defaults.headers.common['Authorization'] = 'bearer '+context.state.accessToken;
       return new Promise((resolve, reject) => {
-        axios.post('auth/logout/')
+        axios.post('api/auth/logout/')
         .then( ({data}) => {
-          localStorage.removeItem('access_token')
+          localStorage.removeItem('accessToken')
+          context.commit('destroyToken')
           resolve(data)
         })
         .catch( err => reject(err))

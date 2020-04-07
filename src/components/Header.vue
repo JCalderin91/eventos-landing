@@ -49,7 +49,7 @@
               <li @click="toggleMenu(false)"><router-link tag="a" :to="{name: 'politics'}">politicas</router-link></li>
               <li v-if="!loggedIn"><a @click.prevent="toggleModal('user-register')">registrase</a></li>
               <li v-if="!loggedIn"><a @click.prevent="toggleModal('login-form')" class="toolbar-new-listing"> Acceder</a></li>
-              <li v-else><a @click.prevent="logout()" class="toolbar-new-listing"> Cerrar sesión</a></li>
+              <li v-else><a @click.prevent="exit()" class="toolbar-new-listing"> Cerrar sesión</a></li>
             </ul>
           </nav>
         </div>
@@ -88,7 +88,15 @@ import {mapMutations, mapState, mapGetters, mapActions} from 'vuex';
 export default {
   methods:{
     ...mapMutations(['toggleModal','toggleMenu']),
-    ...mapActions(['logout'])
+    ...mapActions(['logout']),
+    exit(){
+      this.logout()
+        .then( res => {
+          if(this.$route.name == 'service' || this.$route.name == 'combo'){
+            this.$router.push({name:'unauthorized'})
+          }
+        })
+    }
   },
   computed: {
     ...mapState(['base','menuopen']),

@@ -19,13 +19,13 @@
       <span v-if="!isLoading">Ingresar</span>
       <i v-else class="fa fa-spinner spinner"></i>
     </button>
-    <p class="mt-2"><a href="http://eventos.wen:8080/auth/login" target="_blank">¿Eres un proveedor?</a></p>
+    <p class="mt-2"><a @click="toggleModal()" href="http://eventos.wen:8080/auth/login" target="_blank">¿Eres un proveedor?</a></p>
     <p class="mt-2"><a href="#">¿Olvidó su contraseña?</a></p>
   </form>
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
 export default {
   data: () => ({
     credentials: {
@@ -35,11 +35,17 @@ export default {
     isLoading: false,
   }),
   methods: {
+    ...mapMutations(['toggleModal']),
     ...mapActions(['login']),
     submit(){
       this.isLoading = true
       this.login(this.credentials)
-        .then(res => console.log(res))
+        .then(res => {
+          if(this.$route.name === 'unauthorized'){
+            this.$router.go(-1)
+          }
+          this.toggleModal()
+        })
         .catch(err => console.log(err))
         .finally( () => this.isLoading = false)
     }

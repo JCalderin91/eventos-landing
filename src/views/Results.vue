@@ -58,7 +58,7 @@
 import SearchForm from '@/components/SearchForm'
 import Map from '@/components/Map'
 import Item from '@/components/Item'
-import { mapState, mapMutations } from 'vuex';
+import { mapState, mapMutations, mapGetters } from 'vuex';
 
 export default {
   components: { SearchForm, Item, Map },
@@ -72,7 +72,7 @@ export default {
     }
   },
   methods:{
-    ...mapMutations(['clearResults','clearRequest','search'])
+    ...mapMutations(['clearResults','clearRequest','search']),
   },
   computed: {
     ...mapState(['searchResults']),
