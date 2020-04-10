@@ -31,7 +31,7 @@
                  <!-- <div v-if="isCombo(service)" class="tag-combo">Oferta</div> -->
                   <img v-if="isCombo(service)" class="tag-combo" src="images/oferta.svg" alt="feature item" />
                   <div class="figure">
-                    <img src="images/listings/370x300/01.jpg" alt="feature item" />
+                    <img height="250" :src="serverUrl+'public/img/'+imagen(service)" alt="feature item" />
                     <div class="item-love"><a href="#"><i class="fa fa-heart-o"></i><i class="fa fa-heart "></i></a>
                     </div>
                     <div class="hover-overlay">
@@ -112,9 +112,15 @@ export default {
           this.$router.push({name:'results', params: {results: res.data}})
         })
     },
+    imagen(service){
+      if(service.images)
+        return service.images[Math.floor(Math.random()*(service.images.length)+0)].video_img
+      let imagenes = service.details[Math.floor(Math.random()*(service.details.length)+0)].images
+      return imagenes = imagenes[Math.floor(Math.random()*(imagenes.length)+0)].video_img
+    }
   },
   computed: {
-    ...mapState(['request'])
+    ...mapState(['request','serverUrl'])
   }
 }
 </script>

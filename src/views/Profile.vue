@@ -1,7 +1,7 @@
 <template>
   <div class="profile">
     <div class="header-profile">
-      <img class="header-photo" :src="base+'/images/carousel/04.jpg'" alt="feature item">
+      <img class="header-photo" :src="serverUrl+'/public/img/'+provider.detail_provider.banner" alt="feature item">
       <div class="container">
         <div class="row">
           <div v-if="!isLoading" class="col-md-4 ">  
@@ -61,7 +61,7 @@
       ...mapActions(['getProvider'])
     },
     computed: {
-      ...mapState(['base'])
+      ...mapState(['base','serverUrl'])
     }
   }
 </script>
