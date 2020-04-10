@@ -14,9 +14,9 @@
         <span class="fa fa-link"></span>
         <p>https://burgerandlobster.com</p>
       </div>
-      <div class="item">
+      <div class="item" v-for="schedu in provider.schedule" :key="schedu.id">
         <span class="fa fa-calendar"></span>
-        <p>Mon - Sun 09:30 am - 05:30 pm </p>
+        <p>{{days[schedu.day_of_week]}} - {{schedu.open}} - {{schedu.open}}</p>
       </div>
       <a href="#" class="featured-open">Abierto</a>
     </div>    
@@ -32,7 +32,10 @@ export default {
       type: Object,
       required: true
     }
-  }
+  },
+  data: () => ({
+    days: ['Dom','Lun','Mar','Mie','Jue','Vie','Sab']
+  }),
 }
 </script>
 

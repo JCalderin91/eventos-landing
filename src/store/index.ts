@@ -10,6 +10,7 @@ axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 export default new Vuex.Store({
   state: {
+    serverUrl: 'http://eventos.wen:8080/',
     accessToken: localStorage.getItem('accessToken') || null,
     user: {}, 
     menuopen: false,
@@ -49,7 +50,7 @@ export default new Vuex.Store({
     setToken: (state, accessToken) => state.accessToken = accessToken, 
     setUser: (state, user) => state.user = user, 
     destroyToken: (state) => state.accessToken = null, 
-    destroyUser: (state) => state.user = null, 
+    destroyUser: (state) => state.user = {}, 
   },
   actions: {
     search(context, payload){
@@ -161,7 +162,9 @@ export default new Vuex.Store({
           context.commit('setUser',data)
           resolve(data)
         })
-        .catch( err => reject(err))
+        .catch( err => {
+    
+          reject(err)})
       })
     },
     

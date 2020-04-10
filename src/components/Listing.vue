@@ -47,11 +47,17 @@
                         </a> -->
                       </div>
                       <div class="listing-title">
-                        <h6>
+                        <h6 v-if="!isCombo(service)">
                           <router-link :to="{name:'service', params: {id:service.id}}">
                             {{isCombo(service) ? service.nombre_combo_servicio : service.nombre_servicio}}
                           </router-link>
                         </h6>
+                        <h6 v-else>
+                          <router-link :to="{name:'combo', params: {id:service.id}}">
+                            {{isCombo(service) ? service.nombre_combo_servicio : service.nombre_servicio}}
+                          </router-link>
+                        </h6>
+                        
                       </div>
                       <div class="listing-location pull-left">
                         <!-- location-->

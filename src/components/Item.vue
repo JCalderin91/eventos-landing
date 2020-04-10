@@ -2,7 +2,7 @@
   <div>
     <img v-if="isCombo(item)" class="tag-combo" :src="base+'/images/oferta.svg'" alt="feature item" />
 
-    <img class="item-img" :src="base+'/images/listings/370x300/04.jpg'" alt="feature item" />
+    <img height="250" class="item-img" :src="serverUrl+'public/img/'+image" alt="feature item" />
     <div class="card">
       <h6>{{!isCombo(item) ? item.nombre_servicio :item.nombre_combo_servicio}}</h6>
       <div class="d-flex justify-content-between align-items-center mt-2">
@@ -64,7 +64,13 @@ export default {
     },
   },
   computed: {
-    ...mapState(['request', 'base'])
+    ...mapState(['request', 'base', 'serverUrl']),
+    image(){
+      if(this.item.images)
+        return this.item.images[Math.floor(Math.random()*(this.item.images.length)+0)].video_img
+      let imagenes = this.item.details[Math.floor(Math.random()*(this.item.details.length)+0)].images
+      return imagenes = imagenes[Math.floor(Math.random()*(imagenes.length)+0)].video_img
+    }
   }
 }
 </script>

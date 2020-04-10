@@ -5,7 +5,7 @@
       <div class="container">
         <div class="row">
           <div v-if="!isLoading" class="col-md-4 ">  
-            <Profile-partial :provider="provider" dark/>
+            <Profile-partial :provider="provider" dark/>           
           </div>
           <div class="col-md-6"></div>
           <div class="col-sm-12 side-section">
@@ -21,10 +21,11 @@
       <div class="row">
         <div v-if="!isLoading" class="col-md-4">
           <Info-partial :provider="provider" />
+          <Info :provider="provider"/>
         </div>
         <div class="col-md-8 card">
           <div class="section-items row">
-            <div class="col-md-6" v-for="service in provider.service_client" :key="service.id">
+            <div class="col-md-6 mb-3" v-for="service in provider.service_client" :key="service.id">
               <Item profile :item="service" />
             </div>
           </div>
@@ -37,13 +38,15 @@
 <script>
   import Item from '@/components/Item'
   import InfoPartial from '@/components/InfoPartial'
+  import Info from '@/components/Info'
   import ProfilePartial from '@/components/ProfilePartial'
   import { mapActions, mapState } from 'vuex'
   export default {
     components: {
       Item,
       ProfilePartial,
-      InfoPartial
+      InfoPartial,
+      Info
     },
     data: () => ({
       provider: {},

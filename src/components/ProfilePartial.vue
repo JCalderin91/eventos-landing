@@ -1,7 +1,7 @@
 <template> 
   <div :class="{'card': !dark}" class="user-section mb-2">
     <div class="profile-photo">
-      <img :src="base+'/images/carousel/01.jpg'" alt="feature item">
+      <img :src="serverUrl+'public/img/'+provider.detail_provider.logo_empresa" alt="feature item">
     </div>
     <div :class="{'dark' : dark}" class="title">
       <router-link :to="{name:'profile', params: {id: provider.id}}" class="name">{{provider.nombre_fantasia}}</router-link>
@@ -9,7 +9,7 @@
     </div>
     <div class="row">
       <div class="col-xs-4 indicator">
-        <span :class="{'dark' : dark}">5</span>
+        <span :class="{'dark' : dark}">2</span>
         <p :class="{'dark' : dark}" class="text-uppercase">servicios</p>
       </div>
       <div class="col-xs-4 indicator">
@@ -38,7 +38,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['base'])
+    ...mapState(['base', 'serverUrl'])
   }
 } 
 </script>
@@ -73,6 +73,7 @@ export default {
     height: 130px;
     width: 130px;
     border: 5px solid white;
+    background-color: white;
   }
 }
 .title {

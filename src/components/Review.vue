@@ -2,8 +2,8 @@
   <div class="review card mb-2">
     <div class="row">
       <div class="col-sm-3 review-content-photo">
-        <img class="review-photo" :src="base+'/images/listings/370x300/01.jpg'" alt="feature item" />
-        <h6>Petronila Mata</h6>
+        <img class="review-photo" :src="base+'/img/user.png'" alt="feature item" />
+        <h6>{{user.nombre}} {{user.apellido}}</h6>
       </div>
       <div class="col-sm-9 ">
         <div class="review-body">
@@ -35,7 +35,7 @@
 import { mapState } from 'vuex'
 export default {
   computed: {
-    ...mapState(['base'])
+    ...mapState(['base', 'user'])
   }
 }
 </script>

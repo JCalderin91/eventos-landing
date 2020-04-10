@@ -1,8 +1,8 @@
 <template>
   <div>
     <hooper v-if="typeProfile != 1 && !isLoading" ref="carousel" :settings="hooperSettings">
-      <slide v-for="indx in 3" :key="indx" :index="indx">
-        <img class="imagen-slider" :src="`${base}/images/listings/370x300/0${indx}.jpg`" alt="feature item" />
+      <slide v-for="image in imagenes" :key="image.id" :index="image.id">
+        <img class="imagen-slider" :src="`${serverUrl}public/img/${image.video_img}`" alt="feature item" />
       </slide>
     </hooper>
     <template v-if="!isLoading">
@@ -23,7 +23,7 @@
       </section>
       <div class="container service-body">
         <div class="row">
-          <div :class="{'order-2' : typeProfile == 3}" class="col-md-8">
+          <div :class="{'order-2' : typeProfile == 2}" class="col-md-8">
 
             <hooper v-if="typeProfile == 1" ref="carousel" :settings="hooperSettings">
               <slide v-for="indx in 3" :key="indx" :index="indx">
@@ -33,12 +33,12 @@
 
             <div class="card">
               <p class="parraf">{{ !isCombo ? service.descripcion_servicio : service.descripcion_combo}}</p>
-
+              <hr>
               <div class="service-categories row">
-                <div v-for="i in 6" :key="i" class="col-sm-4">
+                <div v-for="i in 5" :key="i" class="col-sm-4">
                   <p>
                     <i class="fa fa-plus"></i>
-                    Categoria {{i}}
+                    Detalle {{i}}
                   </p>
                 </div>
               </div>
@@ -51,10 +51,10 @@
             <div class="card">
               <h5>12 Comentarios</h5>
               <hr>
-              <Review v-for="i in 3" :key="i" />
+              <Review v-for="i in 1" :key="i" />
             </div>
           </div>
-          <div :class="{'order-1' : typeProfile == 3}" class="col-md-4" v-if="!isLoading && !isCombo">
+          <div :class="{'order-1' : typeProfile == 2}" class="col-md-4" v-if="!isLoading">
             <Info-partial :provider="service.provider" />
             <Profile-partial :provider="service.provider" />
           </div>
@@ -136,11 +136,17 @@ export default {
     },
   },
   computed: {
-    ...mapState(['base']),
+    ...mapState(['base','serverUrl']),
     capacidad(){
       if(this.service.cantidad_persona > 0)
         return `Capacidad de ${this.service.cantidad_persona} ${ this.service.cantidad_persona>1 ? 'personas' : 'persona'}`      
       return ''
+    },
+    imagenes(){ 
+      if(!this.service)  return []
+      if(this.service.images)
+        return this.service.images
+      return this.service.details[Math.floor(Math.random()*(this.service.details.length)+0)].images
     }
   },
  
