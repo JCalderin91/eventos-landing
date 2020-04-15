@@ -39,7 +39,7 @@
       </div>
     </div>
     <hr>
-    <button class="btn btn-rounded bgyallow-1 text-white">Registrarse</button>
+    <button :disabled="isLoading" class="btn btn-rounded bgyallow-1 text-white">Registrarse</button>
     <p class="mt-2"><a @click.prevent="toggleModalType('provider-register')" href="#">Registrarse como proveedor</a></p>
   </form>
 </template>

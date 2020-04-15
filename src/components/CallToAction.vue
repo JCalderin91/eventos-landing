@@ -15,7 +15,7 @@
           <div class="callout-btns">
             <!--blog entry column-->
             <router-link tag="a" class="bgwhite c333" :to="{name:'legals'}">Condiciones</router-link>
-            <a class="bgyallow-1 c333" @click.prevent="toggleModal('user-register')">registrate</a>
+            <a class="bgyallow-1 c333" @click.prevent="toggleModal('provider-register')">registrate</a>
           </div>
           <!--blog entry column end-->
         </div>
@@ -32,3 +32,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scope>
+  a.bgyallow-1{
+    cursor: pointer;
+  }
+</style>

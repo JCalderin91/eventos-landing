@@ -31,18 +31,24 @@
               </slide>
             </hooper>
 
-            <div class="card">
+            <div class="card mb-3">
               <p class="parraf">{{ !isCombo ? service.descripcion_servicio : service.descripcion_combo}}</p>
               <hr>
-              <div class="service-categories row">
-                <div v-for="i in 5" :key="i" class="col-sm-4">
-                  <p>
-                    <i class="fa fa-plus"></i>
-                    Detalle {{i}}
-                  </p>
+              <div class="service-categories">
+                <div class="badge badge-info mr-2" v-for="i in Math.floor(Math.random()*(5-1)+1)" :key="i">
+                  <i class="fa fa-plus"></i>
+                  Detalle {{i}}
                 </div>
               </div>
             </div>
+            
+            <div v-if="isCombo" class="card">
+              <h4 class="mb-3">Servicios del paquete</h4>
+              <Mini-service 
+              v-for="(service, index) in service.details" :key="index"
+              :service="service" />
+            </div>
+
             <br>
             <div class="card">
               <Review-form />
@@ -68,13 +74,14 @@
 <script>
 import ReviewForm from '@/components/ReviewForm'
 import Review from '@/components/Review'
+import MiniService from '@/components/MiniService'
 import ProfilePartial from '@/components/ProfilePartial'
 import InfoPartial from '@/components/InfoPartial'
 import { Hooper, Slide } from 'hooper';
 import 'hooper/dist/hooper.css';
 import {mapActions, mapState} from 'vuex'
 export default {
-  components: {ReviewForm, Review, ProfilePartial, InfoPartial, Hooper, Slide},
+  components: {ReviewForm, Review, ProfilePartial, InfoPartial, MiniService, Hooper, Slide},
   data: () => ({
     isLoading: true,
     service: {},

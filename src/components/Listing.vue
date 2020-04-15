@@ -39,7 +39,7 @@
                     </div>
                     <div class="listing-content clearfix">
                       <div v-if="!isCombo(service)" class="listing-meta-cat">
-                        <a class="bgyallow-1 c333" href="#">
+                        <a @click.prevent="makeSearch(service.sucategory_service.category_service.id, 'category')" class="bgyallow-1 c333" href="#">
                           {{ service.sucategory_service.category_service.nombre_servicio }}
                         </a>
                         <!-- <a class="bgyallow-1 c333" href="#">
@@ -61,7 +61,7 @@
                       </div>
                       <div class="listing-location pull-left">
                         <!-- location-->
-                        <a @click.prevent="makeSearch(service.provider.location.id)" href="#"><i class="fa fa-map-marker"></i>{{service.provider.location.name}}</a>
+                        <a @click.prevent="makeSearch(service.provider.location.id, 'location')" href="#"><i class="fa fa-map-marker"></i>{{service.provider.location.name}}</a>
                       </div><!-- location end-->
                       <div class="star-rating pull-right">
                         <!-- rating-->
@@ -100,11 +100,11 @@ export default {
     isCombo(item){
       return item.nombre_servicio ? false : true
     },
-    makeSearch(id){
+    makeSearch(id, type){
       this.setRequest({
         keywords: '',
-        category: 'all',
-        location: id
+        category: type == 'category' ? id : 'all',
+        location: type == 'location' ? id : 'all'
       })
 
       this.search(this.request)

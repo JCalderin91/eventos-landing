@@ -15,7 +15,7 @@
                     <ul>
                       <li class="toolbar-email"><i class="fa fa-envelope-o"></i>
                         info@eventosok.com</li>
-                      <li class="toolbar-contact"><i class="fa fa-phone"></i> +54 911 2722 5496
+                      <li class="toolbar-contact"><i class="fa fa-whatsapp"></i> +54 911 2722 5496
                       </li>
 
                     </ul>

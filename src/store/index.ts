@@ -163,7 +163,10 @@ export default new Vuex.Store({
           resolve(data)
         })
         .catch( err => {
-    
+          if(err.response.status == 401){
+            context.commit('destroyToken')
+            context.commit('destroyUser')
+          }
           reject(err)})
       })
     },
