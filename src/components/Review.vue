@@ -7,8 +7,7 @@
       </div>
       <div class="col-sm-9 ">
         <div class="review-body">
-          <div>
-            <h6>the best noddle of the Macanao</h6>
+          <div class="pt-3">
             <i v-for="i in 5" :key="i" class="fa fa-star"></i>
             Hace 2 dias
           </div>

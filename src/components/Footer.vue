@@ -13,9 +13,15 @@
               <router-link :to="{name:'home'}"><img :src="base+'/images/logo.png'" alt="footer logo"></router-link>
             </div>
             <div class="footer-intro px-5 px-md-0">
-              <p class="text-center text-md-left mb-md-4">EventosOK</p>
-              <p class="text-center text-md-left"><span>Dirección: </span>Parque Comercial Avellaneda, Local E7, B1875, Avellaneda, Buenos Aires.</p>
-              <p class="text-center text-md-left"><span>Teléfono: </span>+54 911 2722 5496</p>              
+              <p class="text-center text-md-left mb-md-4"><span>EventosOK</span></p>
+              <p class="text-center text-md-left">
+                <span class="mr-1">Dirección:</span>
+                <span class="op-7">Parque Comercial Avellaneda, Local E7, B1875, Avellaneda, Buenos Aires.</span>
+              </p>
+              <p class="text-center text-md-left">
+                <span class="mr-1">Teléfono:</span>
+                <span class="op-7"> +54 911 2722 5496</span>
+              </p>              
             </div>
           </div>
           <div class="col-md-8 col-12 margin-bottom-30">
@@ -92,6 +98,9 @@ export default {
 <style lang="scss" scope>
   .footer-bottom {
     padding-bottom: 15px;
+  }
+  .op-7{
+    opacity: .7;
   }
 
   .social-links {

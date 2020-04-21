@@ -37,6 +37,14 @@
           <div class="invalid-feedback">Las contraseñas no coinciden</div>
         </div>
       </div>
+      <div class="col-12">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked>
+          <label class="form-check-label" for="defaultCheck1">
+            Recibir correos con promociones
+          </label>
+        </div>
+      </div>
     </div>
     <hr>
     <button :disabled="isLoading" class="btn btn-rounded bgyallow-1 text-white">Registrarse</button>

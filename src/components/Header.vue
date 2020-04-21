@@ -48,12 +48,13 @@
               <li @click="toggleMenu(false)"><router-link tag="a" :to="{name: 'legals'}" class="">condiciones legales</router-link></li>
               <li @click="toggleMenu(false)"><router-link tag="a" :to="{name: 'politics'}">politicas</router-link></li>
               <li v-if="!loggedIn"><a @click.prevent="toggleModal('user-register')">registrase</a></li>
-              <li v-if="!loggedIn"><a @click.prevent="toggleModal('login-form')" class="toolbar-new-listing"> Acceder</a></li>
-              <li v-else><a href="#" class="text-white">{{user.nombre}} <div class="i fa fa-user ml-1"></div></a>
+              <li v-if="!loggedIn"><a @click.prevent="toggleModal('login-form')" class="text-xl-white"> Acceder</a></li>
+              <li v-else><a href="#" class="text-xl-white">{{user.nombre}} <div class="i fa fa-user ml-1"></div></a>
                 <ul class="wsmenu-submenu">
                   <li ><a @click.prevent="exit()"> Cerrar sesión</a></li>
                 </ul>
               </li>              
+              <li v-if="loggedIn"><a @click.prevent="exit()" class="d-xl-none"> Cerrar sessión</a></li>
             </ul>
           </nav>
         </div>
@@ -90,6 +91,11 @@
   }
   .text-white{
     color:white !important;
+  }
+  @media only screen and (min-width: 1200px) {
+    .text-xl-white{
+      color: white !important;
+    }
   }
 </style>
 

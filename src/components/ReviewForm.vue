@@ -1,6 +1,6 @@
 <template>
   <div class="review">
-    <h5 class="title">Escriba su comentario</h5>
+    <h5 class="title text-center text-sm-left">Escriba su comentario</h5>
     <hr>
     <div class="row">
       <div class="col-sm-3 user-review">
@@ -8,7 +8,7 @@
         <h6 class="mt-2">{{user.nombre}} {{user.apellido}}</h6>
       </div>
       <div class="col-sm-9">
-        <div class="raiting-stars d-flex">
+        <div class="raiting-stars d-flex justify-content-center justify-content-sm-start">
           <a 
             @click.prevent="markStar(i)"
             :class="{'star-active' : check(i)}"

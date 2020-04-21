@@ -100,10 +100,12 @@ export default {
 .leaflet-control-attribution.leaflet-control{
   display: none;
 }
+
 .vue2leaflet-map{
   max-height: 100%;
   height: 100%;
   max-width: 100%;
   width: 100%;
+  z-index: 1;
 }
 </style>

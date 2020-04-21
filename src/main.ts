@@ -14,20 +14,15 @@ import "@/assets/css/testimonial/style.css"
 import "@/assets/css/testimonial/elastislide.css"
 import "@/assets/css/responsive.css"
 
- 
-
- 
 Vue.use(Notifications)
 
 Vue.config.productionTip = false
 
-
 router.afterEach((from, to) => {
-  if(from.name !== 'home' && from.name !== 'service' && to.name==='results')
-  {
-    console.log('BORRAR');    
-  }  
-  window.scrollTo(0,0)
+  if (from.name !== 'home' && from.name !== 'service' && to.name === 'results') {
+    console.log('BORRAR');
+  }
+  window.scrollTo(0, 0)
 })
 
 new Vue({

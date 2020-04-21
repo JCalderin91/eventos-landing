@@ -14,7 +14,7 @@
                   class="text-success">${{service.monto_servicio}}</span></h4>
               <p>{{capacidad}}</p>
             </div>
-            <div class="col-sm-6 actions">
+            <div class="col-sm-6 actions mt-3 mt-sm-0">
               <div class="btn btn-danger float-right">Solicitar Presupuesto <i class="fa fa-file"></i></div>
               <div class="btn btn-success mr-2 float-right">8.0 <i class="fa fa-trophy"></i></div>
             </div>
@@ -26,8 +26,8 @@
           <div :class="{'order-2' : typeProfile == 2}" class="col-md-8">
 
             <hooper v-if="typeProfile == 1" ref="carousel" :settings="hooperSettings">
-              <slide v-for="indx in 3" :key="indx" :index="indx">
-                <img class="imagen-slider" :src="`${base}/images/listings/370x300/0${indx}.jpg`" alt="feature item" />
+              <slide v-for="image in imagenes" :key="image.id" :index="image.id">
+                <img class="imagen-slider" :src="`${serverUrl}public/img/${image.video_img}`" alt="feature item" />
               </slide>
             </hooper>
 
@@ -61,8 +61,11 @@
             </div>
           </div>
           <div :class="{'order-1' : typeProfile == 2}" class="col-md-4" v-if="!isLoading">
-            <Info-partial :provider="service.provider" />
-            <Profile-partial :provider="service.provider" />
+            <Info-partial :schedule="service.schedule" :provider="service.provider" />
+            <Profile-partial 
+              :servicesCount="service.provider.service_client_count" 
+              :combosCount="service.provider.combos_count" 
+              :provider="service.provider" />
           </div>
         </div>
       </div>

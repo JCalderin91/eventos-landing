@@ -8,18 +8,20 @@
       <div v-if="!dark" class="location">{{provider.location.name}}</div>
     </div>
     <div class="row">
-      <div class="col-xs-4 indicator">
-        <span :class="{'dark' : dark}">2</span>
+      <div class="col-xs-6 indicator">
+        <span v-if="!profile" :class="{'dark' : dark}">{{servicesCount}}</span>
+        <span v-else :class="{'dark' : dark}">{{provider.service_client.length}}</span>
         <p :class="{'dark' : dark}" class="text-uppercase">servicios</p>
       </div>
-      <div class="col-xs-4 indicator">
-        <span :class="{'dark' : dark}">6</span>
-        <p :class="{'dark' : dark}" class="text-uppercase">seguidores</p>
+      <div class="col-xs-6 indicator">
+        <span v-if="!profile" :class="{'dark' : dark}">{{combosCount}}</span>
+        <span v-else :class="{'dark' : dark}">{{provider.combos.length}}</span>
+        <p :class="{'dark' : dark}" class="text-uppercase">combos</p>
       </div>
-      <div class="col-xs-4 indicator">
+      <!-- <div class="cindicator">
         <span :class="{'dark' : dark}">2</span>
         <p :class="{'dark' : dark}" class="text-uppercase">contratado</p>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -35,11 +37,21 @@ export default {
     provider: {
       type: Object,
       required: true,
+    },
+    servicesCount: {
+      default: false,
+    },
+    combosCount: {
+      default: false,
+    },
+    profile: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
     ...mapState(['base', 'serverUrl'])
-  }
+  },
 } 
 </script>
 
