@@ -6,7 +6,7 @@
     <div class="card">
       <h6>{{!isCombo(item) ? item.nombre_servicio :item.nombre_combo_servicio}}</h6>
       <div class="d-flex justify-content-between align-items-center mt-2">
-        <div class="btn btn-success">8.0 <i class="fa fa-trophy"></i></div>
+        <div class="btn btn-success btn-sm">8.0 <i class="fa fa-trophy"></i></div>
         <span>$ {{!isCombo(item)? item.monto_servicio : item.monto_combo}}</span>
       </div>
       <br>
@@ -18,14 +18,15 @@
       <router-link v-else :to="{name:'service', params: {id:item.id}}" class="text-center mt-2">Mas información</router-link>
       <hr v-if="!profile" />
       <div v-if="!profile" class="row">
-        <div  class="col-6 text-uppercase">
+        <div class="col-6 text-uppercase">
           <a class="location-link d-inline" href="#" @click.prevent="moveMap(item.provider)">
             <i class="fa fa-map-marker"></i>
             {{item.provider.location.name}}
           </a>
         </div>
         <div class="col-6 text-uppercase">
-          <p class="text-success text-right">Abierto</p>
+          <p v-if="item.provider.is_working" class="text-success text-right">Abierto</p>
+          <p v-else class="text-danger text-right">Cerrado</p>
         </div>
       </div>
     </div>
@@ -43,7 +44,7 @@ export default {
     profile: {
       type: Boolean,
       default: false
-    }
+    },
   },
   methods:{
     ...mapActions(['search']),
@@ -78,6 +79,7 @@ export default {
 <style lang="scss" scope>
 .item-img{
   width: 100%;
+  border-radius: 3px 3px 0 0;
 }
   .rating {
     display: inline-block;

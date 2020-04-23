@@ -5,6 +5,8 @@
       <h5 class="text-center text">Iniciar sessión</h5>
     </div>
     <hr>
+    <p v-if="error" class="text-danger text-center mb-2">{{error}}</p>
+
     <div class="form-group">
       <label for="exampleInputEmail1">Correo electronico</label>
       <input v-model="credentials.email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -32,6 +34,7 @@ export default {
       email: '',
       password: ''
     },
+    error: null,
     isLoading: false,
   }),
   methods: {
@@ -39,6 +42,7 @@ export default {
     ...mapActions(['login']),
     submit(){
       this.isLoading = true
+      this.error = null
       this.login(this.credentials)
         .then(res => {
           if(this.$route.name === 'unauthorized'){
@@ -46,7 +50,9 @@ export default {
           }
           this.toggleModal()
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+          this.error = err.data.error
+        })
         .finally( () => this.isLoading = false)
     }
   },

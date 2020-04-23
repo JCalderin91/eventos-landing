@@ -28,7 +28,7 @@
       </template>
           
       <template v-else>
-        <div class="item" v-for="(schedule, key, index) in provider.schedule" :key="index">
+        <div class="item" v-for="(schedule, key, index) in provider.p_schedule" :key="index">
           <span class="fa fa-calendar"></span>
           <p>
             <span v-for="(schedu, k, index) in schedule" :key="index">

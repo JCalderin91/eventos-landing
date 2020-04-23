@@ -10,8 +10,11 @@
         <div class="container">
           <div class="row">
             <div class="col-sm-6">
-              <h4 class="text-left">{{ !isCombo ? service.nombre_servicio : service.nombre_combo_servicio }} <span
-                  class="text-success">${{service.monto_servicio}}</span></h4>
+              <h4 class="text-left">{{ !isCombo ? service.nombre_servicio : service.nombre_combo_servicio }} 
+                <span class="text-success">
+                  {{ !isCombo ? service.monto_servicio : service.monto_combo }} $
+                </span>
+              </h4>
               <p>{{capacidad}}</p>
             </div>
             <div class="col-sm-6 actions mt-3 mt-sm-0">

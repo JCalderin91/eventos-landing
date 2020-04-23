@@ -130,15 +130,13 @@ export default new Vuex.Store({
     login(context, payload) {
       return new Promise((resolve, reject) => {
         axios.post('api/auth/login-front/', payload)
-          .then(({
-            data
-          }) => {
+          .then(({data}) => {
             localStorage.setItem('accessToken', data.access_token)
             context.commit('setToken', data.access_token)
             context.commit('setUser', data.user)
             resolve(data)
           })
-          .catch(err => reject(err))
+          .catch(err => reject(err.response))
       })
     },
 
