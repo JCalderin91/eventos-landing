@@ -30,20 +30,7 @@
           <label for="exampleInputPassword1">Teléfono</label>
           <input v-model="credentials.telefono" required type="text" class="form-control">
         </div>
-      </div>
-      <div class="col-md-12">
-        <div class="form-group">
-          <label for="exampleInputPassword1">Categoria principal</label>
-          <select v-model="credentials.servicio" required class="form-control">
-            <option 
-              v-for="category in categories" 
-              :key="category.id" 
-              :value="category.id">
-              {{category.nombre_servicio}}
-            </option>
-          </select>
-        </div>
-      </div>
+      </div>      
     </div>
     <hr>
     <button :disabled="isLoading" class="btn btn-rounded bgyallow-1 text-white">
